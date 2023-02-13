@@ -1,30 +1,27 @@
 const mongoose = require("mongoose");
 
-const ProductSchema = new mongoose.Schema({
+const productSchema = mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Name is required"],
-        minlength: [3, "Name must be at least 3 characters long"]
+        required: true,
     },
-    type: {
+    // type: {
+    //     type: String,
+    //     required: true
+    // },
+    categoryId: {
+        type: [Object]
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    image: {
         type: String,
-        required: [true, "Type is required"],
-        minlength: [3, "Type must be at least 3 characters long"]
-    },
-    category: {
-        type: String,
-        required: [true, "Category is required"],
-        minlength: [3, "Category must be at least 3 characters long"]
-    },
-    description: {
-        type: String,
-        required: [true, "Description is required"],
-        minlength: [3, "Description must be at least 3 characters long"]
-    },
-},
-    { timestamps: true }
-);
+        required: true
+    }
+})
 
-Product = mongoose.model("student", ProductSchema);
+Product = mongoose.model("student", productSchema);
 
 module.exports = Product; 
