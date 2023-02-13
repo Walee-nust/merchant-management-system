@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-content>
+    <div class="header">
+      <h1>Sign Into Your Account</h1>
+    </div>
+    <form (ngSubmit)="onSignin()" name="signinForm" [formGroup]="signinForm">
+      <div class="emailInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Enter email address"
+            required
+          />
+          <mat-error *ngIf="!signinForm.controls['email'].valid">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <span>
+          <a class="text-link" class="aLink" routerLink="/auth/forgot-password"
+            >Forgot Password?</a
+          >
+        </span>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            formControlName="password"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide Password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>
+              {{ hide ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </button>
+          <mat-error *ngIf="!signinForm.controls['password'].valid">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary">Login</button>
+    </form>
+
+    <div class="button-row">
+      <p>Create New Account</p>
+    </div>
+  </mat-card-content>
+</mat-card>
