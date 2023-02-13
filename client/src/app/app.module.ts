@@ -25,7 +25,7 @@ import { MatInputModule, MatButtonModule, MatCardModule, MatIconModule } from '@
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
