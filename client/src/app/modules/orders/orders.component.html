@@ -43,7 +43,7 @@
                         <i
                             *ngIf="ord.status=='not delivered'"
                             class="material-icons"
-                            style="color: 'red';border-radius:20px;"
+                            [ngStyle]="{'color':'red','border-radius':'20px'}"
                             (click)="editOrderStatus(ord)"
                         >
                             delivery_dining
@@ -51,7 +51,7 @@
                         <i
                             *ngIf="ord.status=='delivered'"
                             class="material-icons"
-                            style="color: 'green';border-radius:20px"
+                            [ngStyle]="{'color':'green','border-radius':'20px'}"
                             (click)="editOrderStatus(ord)"
                         >
                             delivery_dining

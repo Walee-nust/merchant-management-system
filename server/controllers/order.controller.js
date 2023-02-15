@@ -51,23 +51,23 @@ exports.addOrder = async (req, res) => {
     res.json(o)
 }
 
-// delete an order and all its invoices
+// delete an order and all its invoices when the order_id is given
 exports.deleteOrder = async (req, res) => {
-    await orderModel.find({ _id: req.body.order_id }).deleteOne().exec()
-    await invoiceModel.find({ order_id: ObjectId(req.body.order_id) }).deleteMany().exec()
+    await orderModel.find({ _id: req.params.order_id }).deleteOne().exec()
+    await invoiceModel.find({ order_id: req.params.order_id }).deleteMany().exec()
     res.json("deleted order")
 }
 
 // update the orderAddress of an order
 exports.updateOrderAddress = async (req, res) => {
-    await orderModel.findOneAndUpdate({ _id: req.body.order_id }, { shipping_address: req.body.shipping_address })
+    await orderModel.findOneAndUpdate({ _id: req.params.order_id }, { shipping_address: req.body.shipping_address })
     res.json("Updated address")
 }
 
 // change the order status of an order
 exports.updateOrderStatus = async (req, res) => {
-    current_status = await orderModel.find({ _id: req.body.order_id }).select({ _id: 0, status: 1 })
+    current_status = await orderModel.find({ _id: req.params.order_id }).select({ _id: 0, status: 1 })
     new_status = current_status[0].status == "not delivered" ? "delivered" : "not delivered"
-    await orderModel.findOneAndUpdate({ _id: req.body.order_id }, { status: new_status })
+    await orderModel.findOneAndUpdate({ _id: req.params.order_id }, { status: new_status })
     res.json(`status updated to ${new_status}`)
 }

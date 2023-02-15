@@ -32,19 +32,18 @@ export class OrderService {
   getOrderList() {
     return this.http.get(this.baseURL + '/getAllOrders');
   }
+
   putOrder(ord: Order) {
     console.log("putOrder: " + ord._id)
-    return this.http.put(this.baseURL + `/updateOrderAddress`, ord);
+    return this.http.put(this.baseURL + `/updateOrderAddress/${ord._id}`, ord);
   }
+
   statusOrder(ord: Order) {
-    return this.http.put(this.baseURL + `/updateOrderStatus`, ord);
+    return this.http.put(this.baseURL + `/updateOrderStatus/${ord._id}`, ord);
   }
+
   deleteOrder(ord: Order) {
-    return this.http.delete(this.baseURL + `/deleteOrder`, {
-      params: {
-        id: ord._id
-      }
-    });
+    return this.http.delete(this.baseURL + `/deleteOrder/${ord._id}`);
 
   }
 }

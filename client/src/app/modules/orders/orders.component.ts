@@ -34,7 +34,7 @@ export class OrdersComponent {
     }
     );
   }
-  
+
   editOrderAddress(ord: Order) {
     var shipping_address = prompt("Enter the new shipping address: ");
 
@@ -54,6 +54,7 @@ export class OrdersComponent {
     );
 
   }
+
   deleteOrder(ord: Order) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.orderService.deleteOrder(ord).subscribe((res) => {
@@ -64,9 +65,11 @@ export class OrdersComponent {
       });
     }
   }
+
   navigateToHome() {
     this.router.navigate(['products']);
   }
+
   viewProducts(ord: Order) {
     this.orderService.getInvoiceList(ord).subscribe((res) => {
       let invoice: any

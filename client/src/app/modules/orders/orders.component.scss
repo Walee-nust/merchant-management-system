@@ -21,6 +21,15 @@ i {
 
 .line {
   display: flex;
+
+  a {
+    i {
+      margin-left: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    } 
+  }
+
 }
 
 table td,
@@ -31,7 +40,6 @@ th {
 
 h1 {
   font-family: "Holtwood One SC", serif;
-
   font-size: 25px;
   color: black;
   margin-left: 25px;
@@ -50,8 +58,6 @@ h2 {
   text-shadow: rgb(0, 0, 0) 1px 1px 1px;
 }
 
-
-
 .btn1 {
   border: none;
   background: #e02a33;
@@ -63,7 +69,9 @@ h2 {
   font-size: 18px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
-  margin-top: 30px
+  margin-top: 20px;
+  margin-bottom: 40px;
+  cursor: pointer;
 }
 
 .btn1:hover {

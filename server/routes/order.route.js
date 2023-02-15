@@ -14,8 +14,8 @@ router.get('/getAllOrders', getAllOrders)
 router.get('/getOrderInvoices/:order_id', getOrderInvoices)
 router.delete('/deleteInvoice/:invoice_id', deleteInvoice)
 router.post('/addOrder', addOrder)
-router.delete('/deleteOrder', deleteOrder)
-router.put('/updateOrderAddress', updateOrderAddress)
-router.put('/updateOrderStatus', updateOrderStatus)
+router.delete('/deleteOrder/:order_id', deleteOrder)
+router.put('/updateOrderAddress/:order_id', updateOrderAddress)
+router.put('/updateOrderStatus/:order_id', updateOrderStatus)
 
 module.exports = router;
