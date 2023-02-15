@@ -1,48 +1,44 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/';
+
 import { Order } from './order.model';
+import { Invoice } from '../invoice/invoice.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class OrderService {
 
   selectedOrder: Order = {
     _id: "",
-    // user_id: "",
+    user_id: "",
     shipping_address: "",
     cost: 0,
     status: "",
     date: ""
-  };
-
+  }
+    ;
   orders?: Order[];
+  invoice?: Invoice[];
   readonly baseURL = 'http://localhost:3000/order';
   constructor(private http: HttpClient) { }
 
-  getOrderList() {
-    return this.http.get(this.baseURL + '/getAllOrders').pipe((res: any) => {
-      // loop through every product in products array in order and replace the product_id with the product name
-      console.log(res.products);
-      for (var i = 0; i < res.products.length; i++) {
-        this.http.get('http://localhost:3000/product' + res.products[i].productId).subscribe((product: any) => {
-          res.products[i].productId = product.name;
-        })
-      }
-      return res;
-    })
+  getInvoiceList(ord: Order) {
+    return this.http.get(this.baseURL + '/getOrderInvoices/' + ord._id);
   }
 
+
+  getOrderList() {
+    return this.http.get(this.baseURL + '/getAllOrders');
+  }
   putOrder(ord: Order) {
     console.log("putOrder: " + ord._id)
     return this.http.put(this.baseURL + `/updateOrderAddress`, ord);
   }
-
   statusOrder(ord: Order) {
     return this.http.put(this.baseURL + `/updateOrderStatus`, ord);
   }
-
   deleteOrder(ord: Order) {
     return this.http.delete(this.baseURL + `/deleteOrder`, {
       params: {
@@ -52,6 +48,3 @@ export class OrderService {
 
   }
 }
-
-
-

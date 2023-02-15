@@ -8,9 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
 import { OrdersComponent } from './modules/orders/orders.component';
 import { SigninComponent } from './signin/signin.component';
-import { MatInputModule, MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatCardModule, MatIconModule, MatSnackBarModule } from '@angular/material';
 import { ProductsComponent } from './modules/products/products.component';
-import { ProductService } from './services/product/product.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -30,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
