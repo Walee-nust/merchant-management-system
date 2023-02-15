@@ -1,15 +1,29 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <button mat-icon-button (click)="toggleSideBar()">
+        <button
+            mat-icon-button
+            (click)="toggleSideBar()"
+        >
             <mat-icon>menu</mat-icon>
         </button>
 
         <span> WALEE </span>
 
-        <div class="signOut" fxFlex fxLayout="row" fxLayoutAlign="flex-end">
-            <ul fxLayout="row" fxLayoutGap="20px">
+        <div
+            class="signOut"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="flex-end"
+        >
+            <ul
+                fxLayout="row"
+                fxLayoutGap="20px"
+            >
                 <li>
-                    <button mat-button [matMenuTriggerFor]="menu">
+                    <button
+                        mat-button
+                        [matMenuTriggerFor]="menu"
+                    >
                         <mat-icon>person_outline</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
@@ -18,7 +32,6 @@
                             Sign out
                         </button>
                     </mat-menu>
-
                 </li>
             </ul>
         </div>
