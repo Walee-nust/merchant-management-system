@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DashboardService } from '../dashboard.service';
+import { DashboardService } from '../../services/dashboard/dashboard.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 export interface PeriodicElement {

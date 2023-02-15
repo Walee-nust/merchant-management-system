@@ -5,7 +5,9 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule } from '@angular/material';
-import { DashboardService } from 'src/app/modules/dashboard.service';
+import { DashboardService } from 'src/app/services/dashboard/dashboard.service';
+import { ProductService } from 'src/app/services/product/product.service';
+import { OrderService } from 'src/app/services/order/order.service';
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { DashboardService } from 'src/app/modules/dashboard.service';
     MatDividerModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTableModule,
+    MatTableModule
   ],
   providers: [
-    DashboardService
+    DashboardService,
+    ProductService,
+    OrderService
   ]
 })
 export class DefaultModule { }

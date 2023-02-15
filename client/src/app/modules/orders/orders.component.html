@@ -6,7 +6,7 @@
     <table class="responsive-table highlight">
         <thead>
             <tr>
-                <!-- <th>User Id</th> -->
+                <th>User Id</th>
                 <th>Products</th>
                 <th>Shipping Address</th>
                 <th>Cost</th>
@@ -14,18 +14,17 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tr *ngFor="let ord of orderService.orders">
+        <tr *ngFor="let ord of orders">
 
             <td>
-                {{ord.user}}
+                {{ord.user_id}}
 
             </td>
             <td>
-                <div *ngFor="let string of ord.products | keyvalue">
-                    {{string.key}}
+                <div *ngFor="let product of ord.products | keyvalue">
+                    {{product.productId}}
+                    {{product.quantity}}
                 </div>
-                <!-- <button class="btn2" (click)="viewProducts(ord)">View Products</button> -->
-
             </td>
             <td>
                 {{ord.shipping_address}}

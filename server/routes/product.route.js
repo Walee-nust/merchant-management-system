@@ -6,24 +6,28 @@ const {
     getProductsCount,
     addProduct,
     getProductsByName,
-    getProductsBycategory_id,
+    getProductsBycategoryId,
     removeImageFromProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    getProducts,
+    getProduct
 } = require("../controllers/product.controller");
 
 // router.post("/count", productCountController);
 // router.get("/list5", productList5Controller);
 
+router.get("/", getProducts);
 router.get("/count", getProductsCount);
 router.post("/", addProduct);
 router.get("/:name", getProductsByName);
-router.get("/:category_id", getProductsBycategory_id);
+router.get("/:categoryId", getProductsBycategoryId);
 router.delete(
-    "/:product_id/image/:imageURL",
+    "/:productId/image/:imageURL",
     removeImageFromProduct
 );
-router.put("/:product_id", updateProduct);
-router.delete("/:product_id", deleteProduct);
+router.get("/:productId", getProduct);
+router.put("/:productId", updateProduct);
+router.delete("/:productId", deleteProduct);
 
 module.exports = router;
