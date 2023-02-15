@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -13,10 +14,16 @@ export class SigninComponent implements OnInit {
 
   onSignin() {
     console.log(this.signinForm.value);
+    this.http
+      .post('http://localhost:3000/user/signin', this.signinForm.value)
+      .subscribe({
+        next: (response) => console.log(response),
+        error: (error) => console.log(error),
+      });
   }
 
   signinForm!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
   ngOnInit() {
     this.signinForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
