@@ -4,9 +4,16 @@
       <h1>Welcome Back</h1>
       <p>Sign in to your Walee Merchant Account</p>
     </div>
-    <form (ngSubmit)="onSignin()" name="signinForm" [formGroup]="signinForm">
+    <form
+      (ngSubmit)="onSignin()"
+      name="signinForm"
+      [formGroup]="signinForm"
+    >
       <div class="emailInput">
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field
+          class="full-width"
+          appearance="outline"
+        >
           <mat-label>Email</mat-label>
           <input
             formControlName="email"
@@ -21,7 +28,10 @@
       </div>
 
       <div>
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field
+          class="full-width"
+          appearance="outline"
+        >
           <mat-label>Password</mat-label>
           <input
             formControlName="password"
@@ -45,7 +55,16 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <button mat-raised-button color="primary">Login</button>
+      <div
+        class="error-field"
+        *ngIf="isError"
+      >
+        Something is wrong with your username or password. Please try again.
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+      >Login</button>
     </form>
 
     <div class="button-row">
