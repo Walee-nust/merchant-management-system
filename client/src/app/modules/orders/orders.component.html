@@ -5,9 +5,10 @@
 
     <table class="responsive-table highlight">
         <thead>
-            <tr>
-                <!-- <th>User Id</th> -->
+            <tr style="background-color:rgb(56, 79, 229)">
+                <th>User Id</th>
                 <th>Products</th>
+                <th>Order Date</th>
                 <th>Shipping Address</th>
                 <th>Cost</th>
                 <th>Status</th>
@@ -15,58 +16,74 @@
             </tr>
         </thead>
         <tr *ngFor="let ord of orderService.orders">
-
             <td>
-                {{ord.user}}
-
+                {{"..."+ord.user_id.slice(ord.user_id.length-5, ord.user_id.length)}}
             </td>
             <td>
-                <div *ngFor="let string of ord.products | keyvalue">
-                    {{string.key}}
-                </div>
-                <!-- <button class="btn2" (click)="viewProducts(ord)">View Products</button> -->
-
+                <button
+                    class="btn2"
+                    (click)="viewProducts(ord)"
+                >View Products</button>
+            </td>
+            <td>
+                {{ord.date}}
             </td>
             <td>
                 {{ord.shipping_address}}
-
             </td>
             <td>
                 Rs. {{ord.cost}}
-
-
             </td>
             <td>
                 {{ord.status}}
-
-
             </td>
             <td>
                 <div class="line">
                     <a class="action-btn">
                         <i
+                            *ngIf="ord.status=='not delivered'"
                             class="material-icons"
+                            style="color: 'red';border-radius:20px;"
                             (click)="editOrderStatus(ord)"
-                        >delivery_dining</i>
+                        >
+                            delivery_dining
+                        </i>
+                        <i
+                            *ngIf="ord.status=='delivered'"
+                            class="material-icons"
+                            style="color: 'green';border-radius:20px"
+                            (click)="editOrderStatus(ord)"
+                        >
+                            delivery_dining
+                        </i>
                     </a>
 
                     <a class="action-btn">
                         <i
                             class="material-icons"
                             (click)="editOrderAddress(ord)"
-                        >edit</i>
+                        >
+                            edit
+                        </i>
                     </a>
                     <a class="action-btn">
                         <i
                             class="material-icons"
                             (click)="deleteOrder(ord)"
-                        >delete</i>
+                        >
+                            delete
+                        </i>
                     </a>
                 </div>
 
             </td>
     </table>
     <div class="center">
-        <button class="btn1">Create Orders</button>
+        <button
+            class="btn1"
+            (click)="navigateToHome()"
+        >
+            Create Orders
+        </button>
     </div>
 </div>

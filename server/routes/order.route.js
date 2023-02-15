@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const {
-    orderCountController,
-    orderList5Controller,
     getAllOrders,
     addOrder,
-    // deleteOrder,
+    deleteOrder,
     updateOrderAddress,
-    updateOrderStatus
+    updateOrderStatus,
+    getOrderInvoices,
+    deleteInvoice
 } = require("../controllers/order.controller");
 
-// router.post("/count", orderCountController);
-// router.get("/list5", orderList5Controller);
 router.get('/getAllOrders', getAllOrders)
+router.get('/getOrderInvoices/:order_id', getOrderInvoices)
+router.delete('/deleteInvoice/:invoice_id', deleteInvoice)
 router.post('/addOrder', addOrder)
-// router.delete('/deleteOrder', deleteOrder)
+router.delete('/deleteOrder', deleteOrder)
 router.put('/updateOrderAddress', updateOrderAddress)
 router.put('/updateOrderStatus', updateOrderStatus)
 

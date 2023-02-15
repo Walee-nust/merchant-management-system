@@ -5,11 +5,11 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    // type: {
-    //     type: String,
-    //     required: true
-    // },
-    category_id: {
+    type: {
+        type: String,
+        required: true
+    },
+    categoryId: {
         type: [Object]
     },
     price: {
@@ -21,6 +21,7 @@ const productSchema = mongoose.Schema({
         required: true
     }
 })
+
 
 Product = mongoose.model("product", productSchema);
 

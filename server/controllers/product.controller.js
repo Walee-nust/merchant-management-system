@@ -1,22 +1,27 @@
 const Product = require('../models/product.model');
 
-// exports.productCountController = async (req, res) => {
-//     try {
-//         const orderCount = await Product.countDocuments();
-//         res.json(orderCount);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// };
+// Get all products
+exports.getProducts = async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 
-// exports.productList5Controller = async (req, res) => {
-//     try {
-//         const orders = await Product.find().sort({ _id: -1 }).limit(5);
-//         res.json(orders);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// };
+// Get a single product
+exports.getProduct = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            throw new Error("Product not found");
+        }
+        res.json(product);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 
 // Get Products Count
 exports.getProductsCount = async (req, res) => {
@@ -31,8 +36,8 @@ exports.getProductsCount = async (req, res) => {
 // Create a new product
 exports.addProduct = async (req, res) => {
     try {
-        const { name, category_id, price, image } = req.body;
-        if (!name || !category_id || !price || !image) {
+        const { name, categoryId, price, image } = req.body;
+        if (!name || !categoryId || !price || !image) {
             throw new Error("Missing required fields");
         }
         // if (image.length > 5) {
@@ -40,7 +45,7 @@ exports.addProduct = async (req, res) => {
         // }
         const product = new Product({
             name,
-            category_id,
+            categoryId,
             price,
             image,
         });
@@ -66,9 +71,9 @@ exports.getProductsByName = async (req, res) => {
 }
 
 // Get products by category
-exports.getProductsBycategory_id = async (req, res) => {
+exports.getProductsBycategoryId = async (req, res) => {
     try {
-        const category = req.params.category_id;
+        const category = req.params.categoryId;
         const products = await Product.find({ category });
         if (!products) {
             throw new Error("No products found for the given category");
@@ -82,9 +87,9 @@ exports.getProductsBycategory_id = async (req, res) => {
 // Remove image from product
 exports.removeImageFromProduct = async (req, res) => {
     try {
-        const product_id = req.params.product_id;
+        const productId = req.params.productId;
         const imageUrl = req.params.imageURL;
-        const product = await Product.findById(product_id);
+        const product = await Product.findById(productId);
         if (!product) {
             throw new Error("Product not found");
         }
@@ -103,8 +108,8 @@ exports.removeImageFromProduct = async (req, res) => {
 // Edit Product
 exports.updateProduct = async (req, res) => {
     try {
-        const { product_id } = req.params;
-        const product = await Product.findById(product_id);
+        const { productId } = req.params;
+        const product = await Product.findById(productId);
         if (!product) {
             throw new Error("Product not found");
         }
@@ -137,8 +142,8 @@ exports.updateProduct = async (req, res) => {
 // Delete Product
 exports.deleteProduct = async (req, res) => {
     try {
-        const product_id = req.params.id;
-        const product = await Product.findByIdAndDelete(product_id);
+        const productId = req.params.id;
+        const product = await Product.findByIdAndDelete(productId);
         if (!product) {
             throw new Error("Product not found");
         }
