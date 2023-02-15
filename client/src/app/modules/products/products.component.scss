@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Holtwood+One+SC');
+@import url('https://fonts.googleapis.com/css?family=GFS+Didot');
+
+table {
+    border-collapse: collapse;
+    background-color: #448aff;
+    border-radius: 20px;
+    margin: 28px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: -14px 19px 17px -2px rgba(0, 0, 0, 0.38);
+    -webkit-box-shadow: -14px 19px 17px -2px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: -14px 19px 17px -2px rgba(0, 0, 0, 0.38);
+}
+
+i {
+    color: white;
+}
+
+.line {
+    display: flex;
+
+    a {
+        i {
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    }
+
+}
+
+table td,
+th {
+    padding: 20px;
+    color: white
+}
+
+td {
+    min-width: 50px;
+}
+
+td {
+    text-align: center;
+}
+
+h1 {
+    font-family: "Holtwood One SC", serif;
+    font-size: 25px;
+    color: black;
+    margin-left: 25px;
+    margin-top: 50px;
+}
+
+h2 {
+    margin-top: 15px;
+    font-family: "GFS Didot", serif;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(0, 0, 0) 1px 1px 1px;
+}
+
+.btn1 {
+    border: none;
+    background: #e02a33;
+    -webkit-border-radius: 20;
+    -moz-border-radius: 20;
+    border-radius: 20px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.btn1:hover {
+    background: #077e21;
+    text-decoration: none;
+    transition: background 0.5s;
+}
+
+.center {
+    display: block;
+    margin-left: 45%;
+    margin-right: auto;
+    width: 50%;
+}
+
+.btn2 {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.btn2:hover {
+    background-color: #f2f2f2;
+
+    transform: scaleX(1.1);
+}

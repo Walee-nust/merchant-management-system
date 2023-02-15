@@ -9,6 +9,8 @@ import { Product } from './product.model';
 
 export class ProductService {
 
+  products?: Product[];
+
   private url = 'http://localhost:3000';
 
   private productList$: Subject<Product[]> = new Subject();
@@ -96,4 +98,9 @@ export class ProductService {
     );
 
   }
+
+  deleteProduct(product: Product) {
+    return this.httpClient.delete(this.url + `/deleteOrder/${product.id}`);
+  }
+
 }

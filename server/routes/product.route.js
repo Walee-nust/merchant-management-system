@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const {
-    productCountController,
-    productList5Controller,
     getProductsCount,
     addProduct,
     getProductsByName,
@@ -13,9 +11,6 @@ const {
     getProducts,
     getProduct
 } = require("../controllers/product.controller");
-
-// router.post("/count", productCountController);
-// router.get("/list5", productList5Controller);
 
 router.get("/", getProducts);
 router.get("/count", getProductsCount);

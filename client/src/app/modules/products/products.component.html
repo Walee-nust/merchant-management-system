@@ -1,1 +1,67 @@
-<p>products works!</p>
+<h2>Welcome Admin</h2>
+<div class="col s7">
+
+    <h1>Product:</h1>
+
+    <table class="responsive-table highlight">
+        <thead>
+            <tr style="background-color:rgb(56, 79, 229)">
+                <th>Product Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Category</th>
+                <!-- <th>Image</th> -->
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let prod of productService.products">
+            <td>
+                {{prod._id}}
+            </td>
+            <td>
+                {{prod.name}}
+            </td>
+            <td>
+                {{prod.type}}
+            </td>
+            <td>
+                Rs. {{prod.price}}
+            </td>
+            <td>
+                {{prod.categoryId}}
+            </td>
+            <!-- <td>
+                {{prod.image}}
+            </td> -->
+            <td>
+                <div class="line">
+                    <a class="action-btn">
+                        <i
+                            class="material-icons"
+                            (click)="editproderAddress(prod)"
+                        >
+                            edit
+                        </i>
+                    </a>
+                    <a class="action-btn">
+                        <i
+                            class="material-icons"
+                            (click)="deleteProduct(prod)"
+                        >
+                            delete
+                        </i>
+                    </a>
+                </div>
+
+            </td>
+    </table>
+    <div class="center">
+        <button
+            class="btn1"
+            (click)="navigateToHome()"
+        >
+            Create products
+        </button>
+    </div>
+</div>

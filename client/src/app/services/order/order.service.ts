@@ -44,6 +44,5 @@ export class OrderService {
 
   deleteOrder(ord: Order) {
     return this.http.delete(this.baseURL + `/deleteOrder/${ord._id}`);
-
   }
 }

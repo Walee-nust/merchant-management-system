@@ -1,9 +1,15 @@
 const Product = require('../models/product.model');
+const Category = require('../models/category.model');
 
 // Get all products
 exports.getProducts = async (req, res) => {
     try {
         const products = await Product.find();
+        // change the category id to category name
+        for (let i = 0; i < products.length; i++) {
+            const category = await Category.findById(products[i].categoryId);
+            products[i].categoryId = category.name;
+        }
         res.json(products);
     } catch (err) {
         res.status(500).json({ message: err.message });
