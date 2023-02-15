@@ -1,4 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,8 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
 import { OrdersComponent } from './modules/orders/orders.component';
 import { SigninComponent } from './signin/signin.component';
-import { MatInputModule, MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatCardModule, MatIconModule, MatFormFieldModule, MatProgressSpinnerModule, MatSnackBarModule } from '@angular/material';
 import { ProductsComponent } from './modules/products/products.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ProductsComponent } from './modules/products/products.component';
     OrdersComponent,
     SigninComponent,
     ProductsComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,12 @@ import { ProductsComponent } from './modules/products/products.component';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

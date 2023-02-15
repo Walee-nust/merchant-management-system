@@ -1,0 +1,71 @@
+<mat-card>
+  <mat-card-content>
+    <div class="header">
+      <h1>Welcome Back</h1>
+      <p>Sign in to your Walee Merchant Account</p>
+    </div>
+    <form (ngSubmit)="onSignup()" name="signupForm" [formGroup]="signupForm">
+      <div class="emailInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Enter email address"
+            required
+          />
+          <mat-error *ngIf="!signupForm.controls['email'].valid">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input
+            formControlName="name"
+            matInput
+            placeholder="Enter your full name"
+            required
+          />
+          <mat-error *ngIf="!signupForm.controls['email'].valid">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            formControlName="password"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide Password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>
+              {{ hide ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </button>
+          <mat-error *ngIf="!signupForm.controls['password'].valid">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary">Join</button>
+    </form>
+
+    <div class="button-row">
+      <a href="/signin">Already Merchant? Sign in</a>
+    </div>
+  </mat-card-content>
+</mat-card>
