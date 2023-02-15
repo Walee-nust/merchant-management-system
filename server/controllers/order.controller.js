@@ -60,10 +60,10 @@ exports.getAllOrders = async (req, res) => {
 // add order to the database
 
 exports.addOrder = async (req, res) => {
-    const { productId, productQuantity, shipping_address, status } = req.body;
+    const { product_id, productQuantity, shipping_address, status } = req.body;
     const new_order = new orderModel({
         // user_id: req.body.user_id,
-        products: [{ product_id: productId, quantity: productQuantity }],
+        products: [{ product_id: product_id, quantity: productQuantity }],
         shipping_address: shipping_address,
         status: status,
     })

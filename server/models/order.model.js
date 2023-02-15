@@ -6,7 +6,16 @@ const orderSchema = mongoose.Schema({
     //     required: true,
     // },
     products: {
-        type: [{ product_id, quantity }],
+        type: [{
+            product_id: {
+                type: Object,
+                required: true,
+            },
+            quantity: {
+                type: Number,
+                required: true,
+            },
+        }],
         required: true,
     },
     shipping_address: {
@@ -23,6 +32,6 @@ const orderSchema = mongoose.Schema({
     }
 }, { timestamps: true })
 
-Order = mongoose.model("student", orderSchema);
+Order = mongoose.model("order", orderSchema);
 
 module.exports = Order; 

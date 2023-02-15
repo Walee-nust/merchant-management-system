@@ -2,13 +2,13 @@ const express = require('express');
 const dotenv = require("dotenv");
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const connectDB = require('./config/connectDB');
+const connectDB = require('./config/connectDB');
 
 dotenv.config();
 
 const app = express();
 
-// connectDB();
+connectDB();
 
 app.use(cors());
 app.use(bodyParser.json());

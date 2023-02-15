@@ -33,14 +33,8 @@ exports.getCountCategories = async (req, res) => {
 // Get all categories
 exports.getAllCategories = async (req, res) => {
     try {
-        const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 10;
-        const skip = (page - 1) * limit;
-
-        const totalCategories = await Category.countDocuments();
-        const categories = await Category.find().skip(skip).limit(limit);
-
-        res.json({ categories, totalCategories });
+        const categories = await Category.find();
+        res.json(categories);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

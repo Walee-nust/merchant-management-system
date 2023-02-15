@@ -13,7 +13,7 @@ const {
 // router.post("/count", categoryCountController);
 // router.get("/list5", categoryList5Controller);
 
-router.get("/categories/count", getCountCategories);
+router.get("/count", getCountCategories);
 router.get("/", getAllCategories);
 router.post("/", addCategory);
 router.patch("/:id", updateCategory);

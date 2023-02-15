@@ -8,6 +8,6 @@ const categorySchema = mongoose.Schema({
     }
 })
 
-Category = mongoose.model("student", categorySchema);
+Category = mongoose.model("category", categorySchema);
 
 module.exports = Category; 

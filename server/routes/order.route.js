@@ -5,7 +5,7 @@ const {
     orderList5Controller,
     getAllOrders,
     addOrder,
-    deleteOrder,
+    // deleteOrder,
     updateOrderAddress,
     updateOrderStatus
 } = require("../controllers/order.controller");
@@ -14,7 +14,7 @@ const {
 // router.get("/list5", orderList5Controller);
 router.get('/getAllOrders', getAllOrders)
 router.post('/addOrder', addOrder)
-router.delete('/deleteOrder', deleteOrder)
+// router.delete('/deleteOrder', deleteOrder)
 router.put('/updateOrderAddress', updateOrderAddress)
 router.put('/updateOrderStatus', updateOrderStatus)
 

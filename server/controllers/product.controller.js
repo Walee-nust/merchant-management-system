@@ -31,19 +31,18 @@ exports.getProductsCount = async (req, res) => {
 // Create a new product
 exports.addProduct = async (req, res) => {
     try {
-        const { name, type, categoryId, price, images } = req.body;
-        if (!name || !type || !categoryId || !price || !images) {
+        const { name, category_id, price, image } = req.body;
+        if (!name || !category_id || !price || !image) {
             throw new Error("Missing required fields");
         }
-        if (images.length > 5) {
-            throw new Error("A maximum of 5 images is allowed per product");
-        }
+        // if (image.length > 5) {
+        //     throw new Error("A maximum of 5 image is allowed per product");
+        // }
         const product = new Product({
             name,
-            type,
-            categoryId,
+            category_id,
             price,
-            images,
+            image,
         });
         await product.save();
         res.status(201).send(product);
@@ -67,9 +66,9 @@ exports.getProductsByName = async (req, res) => {
 }
 
 // Get products by category
-exports.getProductsByCategoryId = async (req, res) => {
+exports.getProductsBycategory_id = async (req, res) => {
     try {
-        const category = req.params.categoryId;
+        const category = req.params.category_id;
         const products = await Product.find({ category });
         if (!products) {
             throw new Error("No products found for the given category");
@@ -83,17 +82,17 @@ exports.getProductsByCategoryId = async (req, res) => {
 // Remove image from product
 exports.removeImageFromProduct = async (req, res) => {
     try {
-        const productId = req.params.productId;
+        const product_id = req.params.product_id;
         const imageUrl = req.params.imageURL;
-        const product = await Product.findById(productId);
+        const product = await Product.findById(product_id);
         if (!product) {
             throw new Error("Product not found");
         }
-        const index = product.images.indexOf(imageUrl);
+        const index = product.image.indexOf(imageUrl);
         if (index === -1) {
             throw new Error("Image not found in product");
         }
-        product.images.splice(index, 1);
+        product.image.splice(index, 1);
         await product.save();
         res.send(product);
     } catch (error) {
@@ -104,29 +103,29 @@ exports.removeImageFromProduct = async (req, res) => {
 // Edit Product
 exports.updateProduct = async (req, res) => {
     try {
-        const { productId } = req.params;
-        const product = await Product.findById(productId);
+        const { product_id } = req.params;
+        const product = await Product.findById(product_id);
         if (!product) {
             throw new Error("Product not found");
         }
-        const { name, type, category, price, images } = req.body;
+        const { name, category, price, image } = req.body;
         if (name) {
             product.name = name;
         }
-        if (type) {
-            product.type = type;
-        }
+        // if (type) {
+        //     product.type = type;
+        // }
         if (category) {
             product.category = category;
         }
         if (price) {
             product.price = price;
         }
-        if (images) {
-            if (images.length + product.images.length > 5) {
-                throw new Error("Total number of images can't be greater than 5");
+        if (image) {
+            if (image.length + product.image.length > 5) {
+                throw new Error("Total number of image can't be greater than 5");
             }
-            product.images.push(...images);
+            product.image.push(...image);
         }
         await product.save();
         res.status(200).send(product);
@@ -138,8 +137,8 @@ exports.updateProduct = async (req, res) => {
 // Delete Product
 exports.deleteProduct = async (req, res) => {
     try {
-        const productId = req.params.id;
-        const product = await Product.findByIdAndDelete(productId);
+        const product_id = req.params.id;
+        const product = await Product.findByIdAndDelete(product_id);
         if (!product) {
             throw new Error("Product not found");
         }

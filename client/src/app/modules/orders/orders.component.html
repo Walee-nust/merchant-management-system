@@ -3,64 +3,70 @@
 
     <h1>Orders:</h1>
 
-        <table class="responsive-table highlight">
-            <thead>
-                <tr>
-                    <th>User Id</th>
-                    <th>Products</th>
-                    <th>Shipping Address</th>
-                    <th>Cost</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tr *ngFor="let ord of orderService.orders">
+    <table class="responsive-table highlight">
+        <thead>
+            <tr>
+                <!-- <th>User Id</th> -->
+                <th>Products</th>
+                <th>Shipping Address</th>
+                <th>Cost</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let ord of orderService.orders">
 
-                <td>
-                     {{ord.user}}
+            <td>
+                {{ord.user}}
 
-                </td>
-                <td>
-                    <div *ngFor="let string of ord.products | keyvalue">
-                        {{string.key}}
-                    </div>
-                     <!-- <button class="btn2" (click)="viewProducts(ord)">View Products</button> -->
+            </td>
+            <td>
+                <div *ngFor="let string of ord.products | keyvalue">
+                    {{string.key}}
+                </div>
+                <!-- <button class="btn2" (click)="viewProducts(ord)">View Products</button> -->
 
-                </td>
-                <td>
-                    {{ord.shipping_address}}
+            </td>
+            <td>
+                {{ord.shipping_address}}
 
-                </td>
-                <td>
-                     Rs. {{ord.cost}}
-
-
-                </td>
-                <td>
-                     {{ord.status}}
+            </td>
+            <td>
+                Rs. {{ord.cost}}
 
 
-                </td>
-                <td>
-                    <div class="line">
-                        <a class="action-btn">
-                            <i class="material-icons"
-                              (click)="editOrderStatus(ord)">delivery_dining</i>
-                        </a>
+            </td>
+            <td>
+                {{ord.status}}
+
+
+            </td>
+            <td>
+                <div class="line">
+                    <a class="action-btn">
+                        <i
+                            class="material-icons"
+                            (click)="editOrderStatus(ord)"
+                        >delivery_dining</i>
+                    </a>
 
                     <a class="action-btn">
-                        <i class="material-icons"
-                          (click)="editOrderAddress(ord)">edit</i>
+                        <i
+                            class="material-icons"
+                            (click)="editOrderAddress(ord)"
+                        >edit</i>
                     </a>
-                    <a class="action-btn" >
-                        <i class="material-icons"
-                            (click)="deleteOrder(ord)">delete</i>
+                    <a class="action-btn">
+                        <i
+                            class="material-icons"
+                            (click)="deleteOrder(ord)"
+                        >delete</i>
                     </a>
-                    </div>
+                </div>
 
-                </td>
-        </table>
-        <div class="center">
+            </td>
+    </table>
+    <div class="center">
         <button class="btn1">Create Orders</button>
-        </div>
     </div>
+</div>

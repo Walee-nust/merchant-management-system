@@ -9,12 +9,14 @@ import { DefaultModule } from './layouts/default/default.module';
 import { OrdersComponent } from './modules/orders/orders.component';
 import { SigninComponent } from './signin/signin.component';
 import { MatInputModule, MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
+import { ProductsComponent } from './modules/products/products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrdersComponent,
     SigninComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

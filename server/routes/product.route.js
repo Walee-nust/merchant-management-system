@@ -6,7 +6,7 @@ const {
     getProductsCount,
     addProduct,
     getProductsByName,
-    getProductsByCategoryId,
+    getProductsBycategory_id,
     removeImageFromProduct,
     updateProduct,
     deleteProduct
@@ -15,15 +15,15 @@ const {
 // router.post("/count", productCountController);
 // router.get("/list5", productList5Controller);
 
-router.get("/products/count", getProductsCount);
-router.post("/products", addProduct);
-router.get("/products/:name", getProductsByName);
-router.get("/products/:categoryId", getProductsByCategoryId);
+router.get("/count", getProductsCount);
+router.post("/", addProduct);
+router.get("/:name", getProductsByName);
+router.get("/:category_id", getProductsBycategory_id);
 router.delete(
-    "/products/:productId/images/:imageURL",
+    "/:product_id/image/:imageURL",
     removeImageFromProduct
 );
-router.put("/products/:productId", updateProduct);
-router.delete("/products/:productId", deleteProduct);
+router.put("/:product_id", updateProduct);
+router.delete("/:product_id", deleteProduct);
 
 module.exports = router;

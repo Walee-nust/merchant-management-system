@@ -9,7 +9,7 @@ const productSchema = mongoose.Schema({
     //     type: String,
     //     required: true
     // },
-    categoryId: {
+    category_id: {
         type: [Object]
     },
     price: {
@@ -22,6 +22,6 @@ const productSchema = mongoose.Schema({
     }
 })
 
-Product = mongoose.model("student", productSchema);
+Product = mongoose.model("product", productSchema);
 
 module.exports = Product; 
