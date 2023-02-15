@@ -1,7 +1,8 @@
 <mat-card>
   <mat-card-content>
     <div class="header">
-      <h1>Sign Into Your Account</h1>
+      <h1>Welcome Back</h1>
+      <p>Sign in to your Walee Merchant Account</p>
     </div>
     <form (ngSubmit)="onSignin()" name="signinForm" [formGroup]="signinForm">
       <div class="emailInput">
@@ -20,11 +21,6 @@
       </div>
 
       <div>
-        <span>
-          <a class="text-link" class="aLink" routerLink="/auth/forgot-password"
-            >Forgot Password?</a
-          >
-        </span>
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Password</mat-label>
           <input
