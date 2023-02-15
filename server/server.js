@@ -14,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.use('/category', require('./routes/category.route'));
 app.use('/order', require('./routes/order.route'));
 app.use('/product', require('./routes/product.route'));
