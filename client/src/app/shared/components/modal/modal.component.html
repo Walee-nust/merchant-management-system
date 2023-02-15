@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Products</h1>
+<div
+    mat-dialog-content
+    *ngFor="let product of products"
+>
+    <h2> Proudct Name : {{product.product_id}}</h2>
+    <h3> Cost : {{product.cost}}</h3>
+    <h3> Quantity : {{product.quantity}}</h3>
+    <p>---------------------------------------------------------------------</p>
+</div>
+
+<h3>
+    Total Cost : {{totalCost}}
+</h3>
+
+<div mat-dialog-actions>
+    <button
+        mat-button
+        (click)="onNoClick()"
+    >Close</button>
+</div>

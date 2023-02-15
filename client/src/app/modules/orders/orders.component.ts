@@ -3,8 +3,10 @@ import { OrderService } from '../../services/order/order.service';
 import { Order } from '../../services/order/order.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog'
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
-declare var M: any;
+// declare var M: any;
 
 @Component({
   selector: 'app-orders',
@@ -12,7 +14,13 @@ declare var M: any;
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent {
-  constructor(public orderService: OrderService, private snackBar: MatSnackBar, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    public orderService: OrderService,
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     //  this.resetForm();
@@ -67,7 +75,7 @@ export class OrdersComponent {
   }
 
   navigateToHome() {
-    this.router.navigate(['products']);
+    this.router.navigate(['orders']);
   }
 
   viewProducts(ord: Order) {
@@ -75,59 +83,14 @@ export class OrdersComponent {
       let invoice: any
       invoice = res;
 
-      // Create a modal container
-      const modalContainer = document.createElement("div");
-      modalContainer.id = "modal-container";
+      const dialogRef = this.dialog.open(ModalComponent, {
+        width: '500px',
+        data: invoice
+      });
 
-      // Create a modal content container
-      const modalContent = document.createElement("div");
-      modalContent.id = "modal-content";
-
-      // Add some content to the modal
-      const modalHeading = document.createElement("h3");
-      modalHeading.textContent = "Invoice Details";
-      modalHeading.id = "modal-heading";
-      modalContent.appendChild(modalHeading);
-
-      const modalBody = document.createElement("div");
-
-      // Loop through each invoice in the response and display its details
-
-      for (const list of invoice) {
-        const invoiceElement = document.createElement("div");
-
-        invoiceElement.innerHTML = `
-          <p><b> Order id:</b> ${"..." + list.order_id.slice(list.order_id.length - 5, list.order_id.length)}</p>
-          <p><b> Product_id:</b>${"..." + list.product_id.slice(list.product_id.length - 5, list.product_id.length)}</p>
-          <p><b> Quanity: ${list.quantity}</b></p>
-          <p><b> Cost:</b> ${list.cost}</b></p>
-          <hr>
-        `;
-
-        modalBody.appendChild(invoiceElement);
-      }
-
-      modalContent.appendChild(modalBody);
-
-      // Add the modal content to the modal container
-      modalContainer.appendChild(modalContent);
-
-      // Add the modal container to the page
-      document.body.appendChild(modalContainer);
-
-
-      //add a button in the end to close the modal
-      const modalCloseButton = document.createElement("button");
-      modalCloseButton.id = "modal-close-button";
-      modalCloseButton.textContent = "Close";
-      modalContent.appendChild(modalCloseButton);
-
-      // Add an event listener to the close button
-      modalCloseButton.addEventListener("click", () => {
-        // Remove the modal container from the page
-        document.body.removeChild(modalContainer);
-      }
-      );
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
     });
   }
 }

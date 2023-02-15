@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule } from '@angular/material';
+import { MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule, MatDialogModule, MatFormFieldModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -10,6 +9,8 @@ import { AreaComponent } from './widgets/area/area.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PieComponent } from './widgets/pie/pie.component';
     SidebarComponent,
     AreaComponent,
     CardComponent,
-    PieComponent
+    PieComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,9 @@ import { PieComponent } from './widgets/pie/pie.component';
     MatListModule,
     RouterModule,
     HighchartsChartModule,
+    MatDialogModule,
+    FormsModule,
+    MatFormFieldModule
   ],
   exports: [
     HeaderComponent,
@@ -38,7 +43,9 @@ import { PieComponent } from './widgets/pie/pie.component';
     SidebarComponent,
     AreaComponent,
     CardComponent,
-    PieComponent
-  ]
+    PieComponent,
+    ModalComponent
+  ],
+  entryComponents: [ModalComponent]
 })
 export class SharedModule { }

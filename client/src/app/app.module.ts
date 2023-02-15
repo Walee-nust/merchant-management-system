@@ -12,6 +12,8 @@ import { SigninComponent } from './signin/signin.component';
 import { MatInputModule, MatButtonModule, MatCardModule, MatIconModule, MatFormFieldModule, MatProgressSpinnerModule, MatSnackBarModule } from '@angular/material';
 import { ProductsComponent } from './modules/products/products.component';
 import { SignupComponent } from './signup/signup.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import { SignupComponent } from './signup/signup.component';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

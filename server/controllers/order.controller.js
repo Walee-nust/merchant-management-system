@@ -15,6 +15,13 @@ exports.getAllOrders = async (req, res) => {
 // get all invoices of a specific order
 exports.getOrderInvoices = async (req, res) => {
     all_orders = await invoiceModel.find({ order_id: ObjectId(req.params.order_id) })
+
+    // replace product_id with product_name
+    for (o of all_orders) {
+        productData = await productModel.find({ _id: o.product_id })
+        o.product_id = productData[0].name
+    }
+
     res.json(all_orders)
 }
 
