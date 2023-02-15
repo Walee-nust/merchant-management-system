@@ -7,13 +7,13 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
-export class SigninComponent implements OnInit{
+export class SigninComponent implements OnInit {
 
- hide: boolean = true;
+  hide: boolean = true;
 
-onSignin() {
+  onSignin() {
     console.log(this.signinForm.value);
-}
+  }
 
   signinForm!: FormGroup;
   constructor(private fb: FormBuilder) { }
@@ -28,7 +28,7 @@ onSignin() {
 
 function onSignin(this: any) {
 
-   if (!this.signinForm.valid) {
-      return;
-    }
+  if (!this.signinForm.valid) {
+    return;
+  }
 }
