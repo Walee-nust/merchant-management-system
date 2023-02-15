@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   onSignup() {
       console.log(this.signupForm.value);
       this.http
-      .post('http://localhost:4000/user/test', this.signupForm.value)
+      .post('http://localhost:3000/user/signup', this.signupForm.value)
       .subscribe({
         next: (response) => console.log(response),
         error: (error) => console.log(error),

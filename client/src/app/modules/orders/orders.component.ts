@@ -25,42 +25,6 @@ export class OrdersComponent {
     });
   }
 
-
-  // resetForm(form?: NgForm) {
-  //   if (form)
-  //     form.reset();
-  //   this.studentService.selectedStudent = {
-  //     _id: "",
-  //     name: "",
-  //     cms: 0,
-  //     email: "",
-  //     phone: "",
-  //     address: ""
-
-  //   }
-  // }
-  // onSubmit(form: NgForm) {
-  //   if (this.studentService.selectedStudent._id == "") {
-  //     this.studentService.postStudent(form.value).subscribe((res) => {
-  //       this.resetForm(form);;
-  //       this.refreshStudentList();
-  //       if(res==true){
-  //       M.toast({ html: 'Saved successfully', classes: 'rounded'});
-  //       }
-  //       else{
-  //         alert('CMS already exists');
-  //       }
-  //     });
-
-
-  // }
-  //   else {
-  //     this.studentService.putStudent(form.value).subscribe((res) => {
-  //       this.resetForm(form);
-  //       this.refreshStudentList();
-  //       M.toast({ html: 'Updated successfully', classes: 'rounded' });
-  //     });
-  //   }
   editOrderStatus(ord: Order) {
     this.orderService.statusOrder(ord).subscribe((res) => {
       this.refreshOrderList();
@@ -70,6 +34,7 @@ export class OrdersComponent {
     }
     );
   }
+  
   editOrderAddress(ord: Order) {
     var shipping_address = prompt("Enter the new shipping address: ");
 
