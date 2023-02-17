@@ -1,0 +1,24 @@
+<div>
+    <mat-card class="title_center">
+        <div style="text-align:center;">
+            <mat-card-title>Product Details</mat-card-title>
+        </div>
+        <div class="prod-content">
+            <div>
+                <div
+                    class="prod-details"
+                    *ngFor="let data of productDict | keyvalue:keepOriginalOrder"
+                >
+                    <span class="key">{{data.key}}</span>
+                    <!-- evenly space before colon -->
+                    :
+                    <span class="value">{{data.value}}</span>
+                </div>
+            </div>
+            <img
+                src="{{productImage}}"
+                alt=""
+            >
+        </div>
+    </mat-card>
+</div>

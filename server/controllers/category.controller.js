@@ -69,6 +69,7 @@ exports.updateCategory = async (req, res) => {
 
 // Delete a category
 exports.deleteCategory = async (req, res) => {
+    console.log(req.params.id);
     try {
         await Category.findByIdAndDelete(req.params.id);
         res.json({ message: "Category deleted successfully." });

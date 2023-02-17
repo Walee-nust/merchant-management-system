@@ -1,5 +1,17 @@
-<h2>Welcome Admin</h2>
 <div class="col s7">
+    <div class="center">
+        <button
+            class="btn1"
+            (click)="newProduct()"
+        >
+            <div class="material-icons add">
+                add
+            </div>
+            <div>
+                New Product
+            </div>
+        </button>
+    </div>
 
     <h1>Product:</h1>
 
@@ -12,7 +24,7 @@
                 <th>Price</th>
                 <th>Category</th>
                 <!-- <th>Image</th> -->
-                <!-- <th>Action</th> -->
+                <th>Action</th>
             </tr>
         </thead>
         <tr *ngFor="let prod of productService.products">
@@ -26,7 +38,7 @@
                 {{prod.type}}
             </td>
             <td>
-                Rs. {{prod.price}}
+                ${{prod.price}}
             </td>
             <td>
                 {{prod.categoryId}}
@@ -34,12 +46,20 @@
             <!-- <td>
                 {{prod.image}}
             </td> -->
-            <!-- <td>
+            <td>
                 <div class="line">
                     <a class="action-btn">
                         <i
                             class="material-icons"
-                            (click)="editproderAddress(prod)"
+                            (click)="view(prod)"
+                        >
+                            search
+                        </i>
+                    </a>
+                    <a class="action-btn">
+                        <i
+                            class="material-icons"
+                            (click)="edit(prod)"
                         >
                             edit
                         </i>
@@ -47,14 +67,13 @@
                     <a class="action-btn">
                         <i
                             class="material-icons"
-                            (click)="deleteProduct(prod)"
+                            (click)="delete(prod)"
                         >
                             delete
                         </i>
                     </a>
                 </div>
-
-            </td> -->
+            </td>
     </table>
     <!-- <div class="center">
         <button

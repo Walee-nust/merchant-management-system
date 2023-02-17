@@ -31,7 +31,12 @@ export class ProductsComponent {
     });
   }
 
-  deleteProduct(prod: Product) {
+  view(prod: Product) {
+    console.log(prod);
+    this.router.navigate(['products/view/' + prod._id]);
+  }
+
+  delete(prod: Product) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.productService.deleteProduct(prod).subscribe((res) => {
         this.refreshProductList();
@@ -44,5 +49,9 @@ export class ProductsComponent {
 
   navigateToHome() {
     this.router.navigate(['products']);
+  }
+
+  newProduct() {
+    this.router.navigate(['products/new']);
   }
 }

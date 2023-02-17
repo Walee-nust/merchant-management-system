@@ -20,6 +20,9 @@ exports.getProducts = async (req, res) => {
 exports.getProduct = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
+        // change the category id to category name
+        const category = await Category.findById(product.categoryId);
+        product.categoryId = category.name;
         if (!product) {
             throw new Error("Product not found");
         }
@@ -28,6 +31,54 @@ exports.getProduct = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+// Edit Product
+exports.updateProduct = async (req, res) => {
+    try {
+        const { productId } = req.params;
+        const product = await Product.findById(productId);
+        if (!product) {
+            throw new Error("Product not found");
+        }
+        const { name, category, price, image } = req.body;
+        if (name) {
+            product.name = name;
+        }
+        // if (type) {
+        //     product.type = type;
+        // }
+        if (category) {
+            product.category = category;
+        }
+        if (price) {
+            product.price = price;
+        }
+        if (image) {
+            if (image.length + product.image.length > 5) {
+                throw new Error("Total number of image can't be greater than 5");
+            }
+            product.image.push(...image);
+        }
+        await product.save();
+        res.status(200).send(product);
+    } catch (error) {
+        res.status(400).send({ message: error.message });
+    }
+}
+
+// Delete Product
+exports.deleteProduct = async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const product = await Product.findByIdAndDelete(productId);
+        if (!product) {
+            throw new Error("Product not found");
+        }
+        res.send({ message: "Product deleted successfully" });
+    } catch (error) {
+        res.status(400).send({ message: error.message });
+    }
+}
 
 // Get Products Count
 exports.getProductsCount = async (req, res) => {
@@ -106,54 +157,6 @@ exports.removeImageFromProduct = async (req, res) => {
         product.image.splice(index, 1);
         await product.save();
         res.send(product);
-    } catch (error) {
-        res.status(400).send({ message: error.message });
-    }
-}
-
-// Edit Product
-exports.updateProduct = async (req, res) => {
-    try {
-        const { productId } = req.params;
-        const product = await Product.findById(productId);
-        if (!product) {
-            throw new Error("Product not found");
-        }
-        const { name, category, price, image } = req.body;
-        if (name) {
-            product.name = name;
-        }
-        // if (type) {
-        //     product.type = type;
-        // }
-        if (category) {
-            product.category = category;
-        }
-        if (price) {
-            product.price = price;
-        }
-        if (image) {
-            if (image.length + product.image.length > 5) {
-                throw new Error("Total number of image can't be greater than 5");
-            }
-            product.image.push(...image);
-        }
-        await product.save();
-        res.status(200).send(product);
-    } catch (error) {
-        res.status(400).send({ message: error.message });
-    }
-}
-
-// Delete Product
-exports.deleteProduct = async (req, res) => {
-    try {
-        const productId = req.params.id;
-        const product = await Product.findByIdAndDelete(productId);
-        if (!product) {
-            throw new Error("Product not found");
-        }
-        res.send({ message: "Product deleted successfully" });
     } catch (error) {
         res.status(400).send({ message: error.message });
     }

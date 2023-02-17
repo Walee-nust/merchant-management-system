@@ -27,7 +27,7 @@ i {
       margin-left: 10px;
       margin-right: 10px;
       cursor: pointer;
-    } 
+    }
   }
 
 }
@@ -59,32 +59,29 @@ h2 {
 }
 
 .btn1 {
+  display: flex;
+  align-items: center;
   border: none;
-  background: #e02a33;
-  -webkit-border-radius: 20;
-  -moz-border-radius: 20;
-  border-radius: 20px;
+  background: #448aff;
+  border-radius: 5px;
   font-family: Arial;
   color: #ffffff;
   font-size: 18px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
-  margin-top: 20px;
-  margin-bottom: 40px;
   cursor: pointer;
+  margin-right: 50px;
 }
 
 .btn1:hover {
-  background: #077e21;
+  background: rgb(56, 79, 229);
   text-decoration: none;
   transition: background 0.5s;
 }
 
 .center {
-  display: block;
-  margin-left: 45%;
-  margin-right: auto;
-  width: 50%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .btn2 {
@@ -103,4 +100,8 @@ h2 {
   background-color: #f2f2f2;
 
   transform: scaleX(1.1);
+}
+
+.add {
+  padding-right: 3px;
 }

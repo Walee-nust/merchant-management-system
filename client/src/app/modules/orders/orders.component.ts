@@ -93,4 +93,8 @@ export class OrdersComponent {
       });
     });
   }
+
+  newOrder() {
+    this.router.navigate(['orders/new']);
+  }
 }

@@ -1,0 +1,11 @@
+.prod-content {
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+    justify-content: space-evenly;
+
+    .prod-details {
+        font-size: large;
+        padding: 10px;
+    }
+}

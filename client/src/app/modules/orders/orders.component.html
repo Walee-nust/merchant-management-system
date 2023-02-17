@@ -1,5 +1,18 @@
-<h2>Welcome Admin</h2>
 <div class="col s7">
+
+    <div class="center">
+        <button
+            class="btn1"
+            (click)="newOrder()"
+        >
+            <div class="material-icons add">
+                add
+            </div>
+            <div>
+                New Order
+            </div>
+        </button>
+    </div>
 
     <h1>Orders:</h1>
 
@@ -78,12 +91,4 @@
 
             </td>
     </table>
-    <div class="center">
-        <button
-            class="btn1"
-            (click)="navigateToHome()"
-        >
-            Create Orders
-        </button>
-    </div>
 </div>

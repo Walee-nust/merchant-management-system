@@ -1,0 +1,30 @@
+<h2>   
+    New Order
+</h2>
+
+<div class="example-container">
+    <mat-form-field>
+        <input
+            type="text"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+                *ngFor="let product of products | async"
+                [value]="product"
+            >
+                {{ product }}
+            </mat-option>
+        </mat-autocomplete>
+        <!-- <mat-select placeholder="Product">
+            <mat-option
+                *ngFor="let product of products"
+                [value]="product"
+            >
+                {{ product }}
+            </mat-option>
+        </mat-select>    -->
+    </mat-form-field>
+</div>

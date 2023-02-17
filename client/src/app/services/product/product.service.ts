@@ -88,7 +88,6 @@ export class ProductService {
       user_id: userId,
       shipping_address: shippingAddress,
       status: status,
-
     };
 
     return this.httpClient.post(`${this.url}/order/addOrder`, body).subscribe(
@@ -100,7 +99,10 @@ export class ProductService {
   }
 
   deleteProduct(product: Product) {
-    return this.httpClient.delete(this.url + `/deleteOrder/${product.id}`);
+    return this.httpClient.delete(this.url + `/product/${product._id}`);
   }
 
+  getProductById(id: string): Observable<Product> {
+    return this.httpClient.get<Product>(this.url + `/product/${id}`);
+  }
 }

@@ -13,16 +13,16 @@ const {
 } = require("../controllers/product.controller");
 
 router.get("/", getProducts);
+router.get("/:id", getProduct);
 router.get("/count", getProductsCount);
 router.post("/", addProduct);
-router.get("/:name", getProductsByName);
-router.get("/:categoryId", getProductsBycategoryId);
-router.delete(
-    "/:productId/image/:imageURL",
-    removeImageFromProduct
-);
-router.get("/:productId", getProduct);
-router.put("/:productId", updateProduct);
-router.delete("/:productId", deleteProduct);
+router.put("/:id", updateProduct);
+router.delete("/:id", deleteProduct);
+// router.get("/:name", getProductsByName);
+// router.get("/:categoryId", getProductsBycategoryId);
+// router.delete(
+//     "/:productId/image/:imageURL",
+//     removeImageFromProduct
+// );
 
 module.exports = router;
