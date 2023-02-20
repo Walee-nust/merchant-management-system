@@ -24,7 +24,7 @@ export class ProductService {
   }
 
   private refreshProducts(type: string) {
-    this.httpClient.get<Product[]>(`${this.url}/order/getAllProducts`)
+    this.httpClient.get<Product[]>(`${this.url}/product`)
       .subscribe(products => {
         const physicalProductsArr: Product[] = [];
         const digitalProductsArr: Product[] = [];

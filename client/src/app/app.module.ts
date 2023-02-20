@@ -31,12 +31,12 @@ import { NewOrderComponent } from './modules/orders/new/new-order.component';
     NewProductComponent,
     ViewOrderComponent,
     EditOrderComponent,
-    NewOrderComponent,
+    NewOrderComponent 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,  
     AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,  
     DefaultModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -52,7 +52,7 @@ import { NewOrderComponent } from './modules/orders/new/new-order.component';
     MatDialogModule,
     MatOptionModule,
     MatSelectModule,
-    MatAutocompleteModule 
+    MatAutocompleteModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,9 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { Product } from 'src/app/services/product/product.model';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-order',
@@ -12,59 +15,66 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class NewOrderComponent implements OnInit {
 
+  categories: string[] = ["All", "Physical", "Digital"];
+  productList$: Observable<Product[]> = new Observable();
+  physicalList: Observable<Product[]> = new Observable();
+  digitalList: Observable<Product[]> = new Observable();
+  physicalChecked = false;
+  digitalChecked = false;
+  userId: string;
+  radioSelect: string = "";
+
+
   constructor(
-    private orderService: OrderService,
     private productService: ProductService,
-  ) { }
-
-  products = [];
-  myControl = new FormControl(
-    { value: '', disabled: false },
-  );
-  filteredProducts: Observable<any>;
-  selectedProducts = [];
-  productCount = 1;
-
-  ngOnInit() {
-    this.productService.getProducts().subscribe(
-      res => {
-        res.forEach(product => {
-          this.products.push(product.name);
-          this.filteredProducts = this.myControl.valueChanges
-            .pipe(
-              startWith(''),
-              map(value => this._filter(value))
-            );
-        });
-      }
-    );
-
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {
+    this.userId = '';
+    this.fetchAllProducts();
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.products.filter(option => option.toLowerCase().includes(filterValue));
+  ngOnInit(): void {  
   }
 
-  numSequence(n: number): Array<number> {
-    return Array(n);
+
+  fetchAllProducts(): void {
+    this.productList$ = this.productService.getAllProducts();
+  }
+  fetchDigitalProducts(): void {
+    this.productList$ = this.productService.getDigitalProducts();
+  }
+  fetchPhysicalProducts(): void {
+    this.productList$ = this.productService.getPhysicalProducts();
   }
 
-  addProdField() {
-    this.productCount++;
-    
+  radioFunction() {
+    console.log(this.radioSelect);
+    if (this.radioSelect == "physical") {
+
+      this.fetchPhysicalProducts();
+    }
+    else if (this.radioSelect == "digital") {
+      this.fetchDigitalProducts();
+    }
+    else {
+      this.fetchAllProducts();
+    }
   }
 
-  addProdToOrder(prod: any) {
-    this.selectedProducts.push(prod);
+  printID() {
+    console.log(this.userId);
+    this.snackBar.open('User selected Successfully!', '', {
+      duration: 3000,
+    });
   }
 
-  incQuantity(prod: any) {
-    prod.quantity++;
+  navigateToCart() {
+    this.router.navigate(['cart'], { queryParams: { userId: this.userId } });
   }
 
-  decQuantity(prod: any) {
-    prod.quantity--;
+  navigateToOrders() {
+    this.router.navigate(['orders']);
   }
 
 }

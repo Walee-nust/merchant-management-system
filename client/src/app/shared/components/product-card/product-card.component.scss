@@ -1,0 +1,14 @@
+.displayImage {
+    width: 300px;
+    max-width: 250px;
+    height: 300px;
+    object-fit: cover;
+
+    /* centering image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}

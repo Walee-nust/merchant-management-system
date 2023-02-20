@@ -18,15 +18,15 @@
                     href=""
                 >Products</a>
                 <!-- text  -->
-                <input
+                  <input
                     type="radio"
-                    id="All"    
+                    id="All"
                     name="cat"
                     value="all"
                     [(ngModel)]="radioSelect"
                     (change)="radioFunction()"
                 >
-                <label for="html">All &nbsp;</label><br>
+                  <label for="html">All &nbsp;</label><br>
 
                 <input
                     type="radio"
@@ -36,8 +36,8 @@
                     [(ngModel)]="radioSelect"
                     (change)="radioFunction()"
                 >
-                <label for="html">Physcial</label><br>
-                <input
+                  <label for="html">Physcial</label><br>
+                  <input
                     type="radio"
                     id="Digital"
                     name="cat"
@@ -45,7 +45,7 @@
                     [(ngModel)]="radioSelect"
                     (change)="radioFunction()"
                 >
-                <label for="css">Digital</label><br>
+                  <label for="css">Digital</label><br>
                 <h6
                     class="navbar-nav mx-2 me-auto mb-2 mb-lg-0 .text-success "
                     *ngIf="userId != ''"

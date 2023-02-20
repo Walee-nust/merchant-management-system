@@ -12,6 +12,7 @@ import { PieComponent } from './widgets/pie/pie.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ProductSearchComponent } from './components/product-search/product-sear
     CardComponent,
     PieComponent,
     ModalComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
@@ -46,8 +48,13 @@ import { ProductSearchComponent } from './components/product-search/product-sear
     AreaComponent,
     CardComponent,
     PieComponent,
-    ModalComponent
+    ModalComponent,
+    ProductSearchComponent,
+    ProductCardComponent
   ],
-  entryComponents: [ModalComponent]
+  entryComponents: [
+    ModalComponent,
+    ProductCardComponent
+  ]
 })
 export class SharedModule { }
