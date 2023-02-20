@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +18,7 @@ import { NewProductComponent } from './modules/products/new/new-product.componen
 import { ViewOrderComponent } from './modules/orders/view/view-order.component';
 import { EditOrderComponent } from './modules/orders/edit/edit-order.component';
 import { NewOrderComponent } from './modules/orders/new/new-order.component';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +32,13 @@ import { NewOrderComponent } from './modules/orders/new/new-order.component';
     NewProductComponent,
     ViewOrderComponent,
     EditOrderComponent,
-    NewOrderComponent 
+    NewOrderComponent,
+    ProductCardComponent
   ],
   imports: [
-    BrowserModule,  
+    BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,  
+    BrowserAnimationsModule,
     DefaultModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -52,9 +54,12 @@ import { NewOrderComponent } from './modules/orders/new/new-order.component';
     MatDialogModule,
     MatOptionModule,
     MatSelectModule,
-    MatAutocompleteModule   
+    MatAutocompleteModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // schemas: [
+  //   CUSTOM_ELEMENTS_SCHEMA
+  // ],
 })
 export class AppModule { }

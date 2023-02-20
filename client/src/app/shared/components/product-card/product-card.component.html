@@ -1,167 +1,32 @@
-<div>
-    <div>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarTogglerDemo03"
-                    aria-controls="navbarTogglerDemo03"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a
-                    class="navbar-brand mx-2 navID"
-                    href=""
-                >Products</a>
-                <!-- text  -->
-                  <input
-                    type="radio"
-                    id="All"
-                    name="cat"
-                    value="all"
-                    [(ngModel)]="radioSelect"
-                    (change)="radioFunction()"
-                >
-                  <label for="html">All &nbsp;</label><br>
+<div class="card text-black">
+    <img
+        src="{{data.image}}"
+        class="card-img-top displayImage"
+        alt="prodImage"
+    />
+    <div class="card-body">
+        <div class="text-center mt-1">
+            <h4 class="card-title"> {{data.name}}</h4>
+            <h6 class="text-primary mb-1 pb-3">${{data.price}}</h6>
+            <!-- <p>{{data.description}}</p> -->
+            <p>Product Id: {{data._id}}</p>
+            <!-- <p>{{userId}}</p> -->
+        </div>
 
-                <input
-                    type="radio"
-                    id="Physical"
-                    name="cat"
-                    value="physical"
-                    [(ngModel)]="radioSelect"
-                    (change)="radioFunction()"
-                >
-                  <label for="html">Physcial</label><br>
-                  <input
-                    type="radio"
-                    id="Digital"
-                    name="cat"
-                    value="digital"
-                    [(ngModel)]="radioSelect"
-                    (change)="radioFunction()"
-                >
-                  <label for="css">Digital</label><br>
-                <h6
-                    class="navbar-nav mx-2 me-auto mb-2 mb-lg-0 .text-success "
-                    *ngIf="userId != ''"
-                >selected UserId:
-                    &nbsp; &nbsp;
-                    <span class=" text-black bg-warning
-                        ">
-                        {{userId}} </span>
-                </h6>
-                <div
-                    class="collapse navbar-collapse"
-                    id="navbarTogglerDemo03"
-                >
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                    <form
-                        class="d-flex"
-                        role="search"
-                    >
-                        <button
-                            type="button"
-                            class="btn btn-outline-success mb-lg-0 mx-2"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >Select User</button>
-                        <button
-                            class="btn btn-outline-success mx-2"
-                            (click)="navigateToCart()"
-                        >
-                            View Cart</button>
-                        <button
-                            class="btn btn-outline-success mx-2"
-                            (click)="navigateToOrders()"
-                        >View Orders</button>
-
-                    </form>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Modal for Entering UserID-->
-        <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1
-                            class="modal-title fs-5"
-                            id="exampleModalLabel"
-                        >Enter User ID</h1>
-                        <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        ></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input-group mb-3">
-                            <input
-                                type="text"
-                                [(ngModel)]="userId"
-                                class="form-control"
-                                placeholder="Enter user ID"
-                                aria-label="UserID"
-                                aria-describedby="basic-addon2"
-                            >
-                            <span
-                                class="input-group-text"
-                                id="basic-addon2"
-                            ></span>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                        >Cancel</button>
-                        <button
-                            type="button"
-                            (click)="printID()"
-                            data-bs-dismiss="modal"
-                            class="btn btn-primary"
-                        >Confirm</button>
-                    </div>
-                </div>
-            </div>
+        <div class="d-flex flex-row">
+            <button
+                type="button"
+                class="btn btn-primary flex-fill me-1"
+                data-mdb-ripple-color="dark"
+            >
+                Learn more
+            </button>
+            <button
+                type="button"
+                class="btn btn-danger flex-fill ms-1"
+                (click)="addToCart(data._id)"
+            >Buy
+                now</button>
         </div>
     </div>
-
-
-    <!-- DISPLAYING ALL PRODUCTS AND THEIR CATEGORIES -->
-
-
-    <section style="background-color: #eee;">
-        <div class="container py-3">
-            <div class="row">
-                <ng-container *ngFor="let product of productList$ | async">
-                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0 py-3">
-                        <app-product-card
-                            [data]="product"
-                            [userId]="userId"
-                        ></app-product-card>
-                    </div>
-                    <!-- <div class="col-md-12 col-lg-4 mb-4 mb-lg-0 py-3">
-                        <app-product-card [data]="product" [userId]="userId"></app-product-card>
-                    </div> -->
-
-                </ng-container>
-            </div>
-        </div>
-    </section>
-
 </div>

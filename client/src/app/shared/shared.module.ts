@@ -25,7 +25,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     PieComponent,
     ModalComponent,
     ProductSearchComponent,
-    ProductCardComponent
+    // ProductCardComponent
   ],
   imports: [
     CommonModule,
@@ -50,11 +50,11 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     PieComponent,
     ModalComponent,
     ProductSearchComponent,
-    ProductCardComponent
+    // ProductCardComponent
   ],
   entryComponents: [
     ModalComponent,
-    ProductCardComponent
+    // ProductCardComponent
   ]
 })
 export class SharedModule { }
