@@ -11,6 +11,7 @@ import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { FormsModule } from '@angular/forms';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     AreaComponent,
     CardComponent,
     PieComponent,
-    ModalComponent
+    ModalComponent,
+    ProductSearchComponent
   ],
   imports: [
     CommonModule,

@@ -1,30 +1,53 @@
-<h2>   
+<h2>
     New Order
 </h2>
-
+<button
+    mat-raised-button
+    [disabled]="myControl.value === ''"
+    [ngStyle]="{
+                'color': myControl.value === '' ? 'gray' : 'black',
+                'marginBottom': '10px'
+            }"
+    color="primary"
+    (click)="addProdField()"
+>
+    New Product
+</button>
 <div class="example-container">
-    <mat-form-field>
-        <input
-            type="text"
-            matInput
-            [formControl]="myControl"
-            [matAutocomplete]="auto"
-        />
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option
-                *ngFor="let product of products | async"
-                [value]="product"
-            >
-                {{ product }}
-            </mat-option>
-        </mat-autocomplete>
-        <!-- <mat-select placeholder="Product">
-            <mat-option
-                *ngFor="let product of products"
-                [value]="product"
-            >
-                {{ product }}
-            </mat-option>
-        </mat-select>    -->
-    </mat-form-field>
+    <div>
+        <mat-form-field *ngFor="let n of numSequence(productCount);">
+            <input
+                type="text"
+                placeholder="Product"
+                matInput
+                [formControl]="myControl"
+                [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                    *ngFor="let product of filteredProducts | async"
+                    [value]="product"
+                    [disabled]="selectedProducts.includes(product)"
+                    (click)="addProdToOrder(product)"
+                >
+                    {{ product }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    <div>
+        <div class='checkout-arrow'>
+            <!-- (click)="cartService.decQuantity(cartItem)" -->
+            <!-- [ngStyle]="{
+            'pointer-events': cartItem.quantity > 1 ? 'all' : 'none',
+            color: cartItem.quantity > 1 ? 'black' : 'grey'
+            }" -->
+            &#10094;
+        </div>
+
+        <div class='checkout-arrow'>
+            <!-- (click)="cartService.incQuantity(cartItem)" -->
+            &#10095;
+        </div>
+    </div>
 </div>
