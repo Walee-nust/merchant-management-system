@@ -18,7 +18,6 @@ import { NewProductComponent } from './modules/products/new/new-product.componen
 import { ViewOrderComponent } from './modules/orders/view/view-order.component';
 import { EditOrderComponent } from './modules/orders/edit/edit-order.component';
 import { NewOrderComponent } from './modules/orders/new/new-order.component';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
 @NgModule({
@@ -59,14 +58,5 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
   ],
   providers: [],
   bootstrap: [AppComponent],
-<<<<<<< HEAD
-  // chemas: [
-  //   CUSTOM_ELEMENTS_SCHEMA,
-  //   NO_ERRORS_SCHEMA
-=======
-  // schemas: [
-  //   CUSTOM_ELEMENTS_SCHEMA
->>>>>>> f91e08fafcda12350b19fc8dafae695d5c7e6647
-  // ],
-})
+})  
 export class AppModule { }
