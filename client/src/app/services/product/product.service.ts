@@ -73,10 +73,10 @@ export class ProductService {
     return this.productList$;
   }
 
-  addToCart(userId: string, product: string) {
-    if (userId == '') { return }
+  addToCart(userName: string, product: string) {
+    if (userName == '') { return }
     // const body = { products: products };
-    return this.httpClient.post<any>(`${this.url}/cart/addCart/${userId}`, { productId: product }).subscribe(
+    return this.httpClient.post<any>(`${this.url}/cart/addCart/${userName}`, { productId: product }).subscribe(
       (response) => {
         console.log(response);
       }

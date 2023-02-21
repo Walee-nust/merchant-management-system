@@ -58,8 +58,5 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
   ],
   providers: [],
   bootstrap: [AppComponent],
-  // schemas: [
-  //   CUSTOM_ELEMENTS_SCHEMA
-  // ],
-})
+})  
 export class AppModule { }

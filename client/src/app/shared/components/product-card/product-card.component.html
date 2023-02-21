@@ -9,6 +9,9 @@
             <h4 class="card-title"> {{data.name}}</h4>
             <h6 class="text-primary mb-1 pb-3">${{data.price}}</h6>
             <!-- <p>{{data.description}}</p> -->
+            <!-- <p>Product Id: {{data._id}}</p> -->
+            =======
+            <p>Product Id: {{data._id}}</p>
             <!-- <p>{{userId}}</p> -->
         </div>
 
@@ -18,14 +21,16 @@
                 class="btn btn-primary flex-fill me-1"
                 data-mdb-ripple-color="dark"
             >
+
                 Learn more
             </button>
             <button
                 type="button"
                 class="btn btn-danger flex-fill ms-1"
                 (click)="addToCart(data._id)"
-            >Buy
-                now</button>
+            >
+                Add to Cart
+            </button>
         </div>
     </div>
 </div>
