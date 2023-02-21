@@ -36,7 +36,7 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
     ProductCardComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,  
     AppRoutingModule,
     BrowserAnimationsModule,
     DefaultModule,
