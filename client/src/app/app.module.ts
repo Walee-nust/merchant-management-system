@@ -19,6 +19,7 @@ import { ViewOrderComponent } from './modules/orders/view/view-order.component';
 import { EditOrderComponent } from './modules/orders/edit/edit-order.component';
 import { NewOrderComponent } from './modules/orders/new/new-order.component';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { CartComponent } from './modules/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
     ViewOrderComponent,
     EditOrderComponent,
     NewOrderComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ import { ProductsComponent } from './modules/products/products.component';
 import { ViewProductComponent } from './modules/products/view/view-product.component';
 import { SigninComponent } from './signin/signin.component'
 import { SignupComponent } from './signup/signup.component';
+import { CartComponent } from './modules/cart/cart.component'
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
           { path: '', component: OrdersComponent },
           { path: 'new', component: NewOrderComponent },
           { path: 'edit/:id', component: EditOrderComponent },
-          { path: 'view/:id', component: ViewOrderComponent }
+          { path: 'view/:id', component: ViewOrderComponent },
+          { path: 'cart', component:  CartComponent}
         ]
       },
       {
@@ -39,7 +41,8 @@ const routes: Routes = [
     ]
   },
   { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+
 ];
 
 @NgModule({
