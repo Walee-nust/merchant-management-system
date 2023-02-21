@@ -1,0 +1,85 @@
+<!-- <div *ngIf="cartSize !=0; else elseBlock"> -->
+  <div>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Sr.</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of cart; let i = index ">
+            <td>{{i+1}}</td>
+            <td>{{item.product_id}}</td>
+            <td>{{item.quantity}}</td>
+            <!-- <td>{{item.user_id}}</td> -->
+
+
+
+            <td>
+                <button class="btn btn-primary mx-2" (click)="addToCart(item.product_id)">+</button>
+                <button class="btn btn-danger mx-2" (click)="deleteCartItem(item.product_id)">-</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<!-- CHECKOUT FORM  -->
+
+<div class="container p-0">
+    <div class="card px-4">
+        <p class="h8 py-3">Order Details</p>
+        <div class="row gx-3">
+            <div class="col-12">
+                <div class="d-flex flex-column">
+                    <p class="text mb-1"> Address</p>
+                    <input class="form-control mb-3" type="text" placeholder="Address" [(ngModel)]="address">
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-12">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1"> Cost</p>
+                        <input class="form-control mb-3" type="number" placeholder="123" value="Barry Allen" disabled="true">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Card Number</p>
+                        <input class="form-control mb-3" type="text" disabled="true" placeholder="1234 5678 435678">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Expiry</p>
+                        <input class="form-control mb-3" type="text" disabled="true" placeholder="MM/YYYY">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">CVV/CVC</p>
+                        <input class="form-control mb-3 pt-2 "  disabled="true" type="password" placeholder="***">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="btn btn-primary mb-3">
+                        <span class="ps-3" (click)="addOrder()">Confirm Order</span>
+                        <span class="fas fa-arrow-right"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #cartEmpty>
+        <div>
+            <h2>Cart is Empty!</h2>
+            </div>
+      </ng-template>
+</div>
+</div>
+<!-- <ng-template #elseBlock><div class = "d-flex justify-content-center"> <h2>Cart is Empty!</h2></div></ng-template> -->

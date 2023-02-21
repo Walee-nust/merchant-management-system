@@ -83,9 +83,9 @@ export class ProductService {
     );
   }
 
-  addOrder(userId: string, shippingAddress: string, status: string) {
+  addOrder(userName: string, shippingAddress: string, status: string) {
     const body = {
-      user_id: userId,
+      user_name: userName,
       shipping_address: shippingAddress,
       status: status,
     };
