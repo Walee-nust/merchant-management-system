@@ -18,6 +18,8 @@ import { NewProductComponent } from './modules/products/new/new-product.componen
 import { ViewOrderComponent } from './modules/orders/view/view-order.component';
 import { EditOrderComponent } from './modules/orders/edit/edit-order.component';
 import { NewOrderComponent } from './modules/orders/new/new-order.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { NewOrderComponent } from './modules/orders/new/new-order.component';
     NewProductComponent,
     ViewOrderComponent,
     EditOrderComponent,
-    NewOrderComponent 
+    NewOrderComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,  
@@ -55,6 +58,10 @@ import { NewOrderComponent } from './modules/orders/new/new-order.component';
     MatAutocompleteModule   
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // chemas: [
+  //   CUSTOM_ELEMENTS_SCHEMA,
+  //   NO_ERRORS_SCHEMA
+  // ],
 })
 export class AppModule { }

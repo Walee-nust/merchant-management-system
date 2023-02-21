@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 export class ProductCardComponent implements OnInit {
 
   @Input() data: any;
-  @Input() userId: any;
+  @Input() userName: any;
 
   constructor(private productService: ProductService, private snackBar: MatSnackBar) { }
 
@@ -18,7 +18,8 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart(product: string) {
-    if (this.userId == '' || this.userId == null || this.userId == undefined) {
+    console.log("User Name: " + this.userName)
+    if (this.userName == '' || this.userName == null || this.userName == undefined) {
       console.log("Invalid UserId");
       this.snackBar.open('Please select a user ID first!', '', {
         duration: 3000,
@@ -26,7 +27,7 @@ export class ProductCardComponent implements OnInit {
       return
     }
     else {
-      this.productService.addToCart(this.userId, product);
+      this.productService.addToCart(this.userName, product);
       // this.ngOnInit();
 
       this.snackBar.open('Cart Updated!', '', {
