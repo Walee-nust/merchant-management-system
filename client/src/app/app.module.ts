@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,9 +37,9 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
     ProductCardComponent
   ],
   imports: [
-    BrowserModule,  
+    BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,  
+    BrowserAnimationsModule,
     DefaultModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -55,13 +55,18 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
     MatDialogModule,
     MatOptionModule,
     MatSelectModule,
-    MatAutocompleteModule   
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent],
+<<<<<<< HEAD
   // chemas: [
   //   CUSTOM_ELEMENTS_SCHEMA,
   //   NO_ERRORS_SCHEMA
+=======
+  // schemas: [
+  //   CUSTOM_ELEMENTS_SCHEMA
+>>>>>>> f91e08fafcda12350b19fc8dafae695d5c7e6647
   // ],
 })
 export class AppModule { }
