@@ -46,13 +46,13 @@
                     (change)="radioFunction()"
                 />
                 <label for="css">Digital</label><br />
-                <h6
+                <!-- <h6
                     class="navbar-nav mx-2 me-auto mb-2 mb-lg-0 .text-success"
-                    *ngIf="userName != ''"
+                    *ngIf="userId != ''"
                 >
-                    selected userName: &nbsp; &nbsp;
-                    <span class="text-black bg-warning"> {{ userName }} </span>
-                </h6>
+                    selected userId: &nbsp; &nbsp;
+                    <span class="text-black bg-warning"> {{ userId }} </span>
+                </h6> -->
 
                 <div
                     class="collapse navbar-collapse"
@@ -83,14 +83,14 @@
 
     <!-- DISPLAYING ALL PRODUCTS AND THEIR CATEGORIES -->
 
-    <div class="username">
+    <div class="userId">
         <div class="input-group mb-3">
             <input
                 type="text"
-                [(ngModel)]="userName"
+                [(ngModel)]="userId"
                 class="form-control"
-                placeholder="Enter user Name"
-                aria-label="userName"
+                placeholder="Enter user Id"
+                aria-label="userId"
                 aria-describedby="basic-addon2"
             />
             <span
@@ -116,7 +116,7 @@
                     <div class="col-md-12 col-lg-4 mb-4 mb-lg-0 py-3">
                         <app-product-card
                             [data]="product"
-                            [userName]="userName"
+                            [userId]="userId"
                         ></app-product-card>
                     </div>
                 </ng-container>

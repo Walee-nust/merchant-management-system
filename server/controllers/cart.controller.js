@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const mongoose = require('../database')
+const mongoose = require('mongoose')
 const cartModel = require('../models/cart.model')
 const ObjectId = mongoose.Types.ObjectId
 
@@ -18,12 +18,7 @@ exports.getAllProducts = async (req, res) => {
 // increases the quantity of the product in a user's cart by one
 exports.increaseQuantity = async (req, res) => {
     try {
-        await cartModel.find(
-            {
-                user_name: req.params.user_name,    
-                product_id: ObjectId(req.body.product_id)
-            }
-        ).then(async (results) => {
+        await cartModel.find({ user_id: ObjectId(req.params.user_id), product_id: ObjectId(req.body.product_id) }).then(async (results) => {
             a = await cartModel.updateOne({ _id: results[0]._id }, { quantity: results[0].quantity + 1 })
             res.json(a)
         })
@@ -63,5 +58,3 @@ exports.removeAllProducts = async (req, res) => {
         res.json(e)
     }
 };
-
-module.exports = router
