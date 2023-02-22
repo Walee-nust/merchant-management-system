@@ -74,9 +74,10 @@ export class ProductService {
   }
 
   addToCart(userId: string, product: string) {
+    console.log('Product Id: ' + product);
     if (userId == '') { return }
     // const body = { products: products };
-    return this.httpClient.post<any>(`${this.url}/cart/addCart/${userId}`, { productId: product }).subscribe(
+    return this.httpClient.post<any>(`${this.url}/cart/addCart/${userId}`, { product_id: product }).subscribe(
       (response) => {
         console.log(response);
       }

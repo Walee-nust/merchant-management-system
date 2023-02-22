@@ -21,7 +21,7 @@ export class NewOrderComponent implements OnInit {
   digitalList: Observable<Product[]> = new Observable();
   physicalChecked = false;
   digitalChecked = false;
-  userName: string;
+  userId: string;
   radioSelect: string = "";
 
 
@@ -30,7 +30,7 @@ export class NewOrderComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router
   ) {
-    this.userName = '';
+    this.userId = '';
     this.fetchAllProducts();
   }
 
@@ -63,14 +63,14 @@ export class NewOrderComponent implements OnInit {
   }
 
   printID() {
-    console.log(this.userName);
+    console.log(this.userId);
     this.snackBar.open('User selected Successfully!', '', {
       duration: 3000,
     });
   }
 
   navigateToCart() {
-    this.router.navigate(['orders/cart'], { queryParams: { userId: this.userName } });
+    this.router.navigate(['orders/cart'], { queryParams: { userId: this.userId } });
   }
 
   navigateToOrders() {
