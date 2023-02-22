@@ -34,7 +34,9 @@ export class CartComponent implements OnInit {
   }
 
   navigateToHome() {
-    this.router.navigate(['products']);
+    setTimeout(() => {
+      this.router.navigate(['orders']);
+    }, 1000);
   }
 
 
