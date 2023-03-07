@@ -34,7 +34,7 @@ export class NewOrderComponent implements OnInit {
     this.fetchAllProducts();
   }
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
   }
 
 
@@ -70,7 +70,7 @@ export class NewOrderComponent implements OnInit {
   }
 
   navigateToCart() {
-    this.router.navigate(['cart'], { queryParams: { userId: this.userId } });
+    this.router.navigate(['orders/cart'], { queryParams: { userId: this.userId } });
   }
 
   navigateToOrders() {

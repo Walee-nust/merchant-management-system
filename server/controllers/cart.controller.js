@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const mongoose = require('../database')
+const mongoose = require('mongoose')
 const cartModel = require('../models/cart.model')
 const ObjectId = mongoose.Types.ObjectId
 
@@ -58,5 +58,3 @@ exports.removeAllProducts = async (req, res) => {
         res.json(e)
     }
 };
-
-module.exports = router

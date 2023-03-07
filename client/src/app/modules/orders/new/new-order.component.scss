@@ -1,16 +1,31 @@
 .example-container {
     display: flex;
     align-items: center;
-    // text-align: center;
-    // flex-direction: column;
+    text-align: center;
+    flex-direction: column;
 
     mat-form-field {
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
     }
 }
 
 .example-container>* {
     width: 30%;
     margin-right: 20px;
+}
+
+.userId {
+    margin-top: 20px;
+
+    .input-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 30%;
+    }
+
+    button{
+        margin-bottom: 20px;
+    }
 }

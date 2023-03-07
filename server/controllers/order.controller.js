@@ -47,7 +47,7 @@ exports.addOrder = async (req, res) => {
         total_cost += (cost * p.quantity)
         costArr.push(cost)
     }
-    newOrder = new orderModel({ user_id: ObjectId(req.body.user_id), shipping_address: req.body.shipping_address, cost: total_cost, status: req.body.status, date: currentDateString })
+    newOrder = new orderModel({ user_id: req.body.user_id, shipping_address: req.body.shipping_address, cost: total_cost, status: req.body.status, date: currentDateString })
     o = await newOrder.save()
     count = 0
     for (p of products) {

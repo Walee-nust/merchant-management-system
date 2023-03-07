@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Cart } from './cart.model';
 
@@ -30,11 +31,20 @@ export class CartService {
     return this.cart$;
   }
 
-  deleteFromCart(userId: string, productId: string) {
-    return this.httpClient.delete<any>(`${this.url}/cart/deleteCart/${userId}`, {
-      params: {
-        productId: productId
-      }
-    });
+  deleteFromCart(userId: string, product_id: string) {
+    console.log('product_id: ' + product_id);
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        product_id: product_id,
+      },
+    };
+    return this.httpClient.delete<any>(`${this.url}/cart/deleteCart/${userId}`, options).subscribe(
+      (response) => {
+        console.log(response);
+        this.getCart(userId);
+      });
   }
 }

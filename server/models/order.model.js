@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema({
     user_id: {
-        type: Object,
-        required: true,
+        type: String
     },
     shipping_address: {
         type: String

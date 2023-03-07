@@ -20,13 +20,13 @@
                 <!-- text  -->
                 <input
                     type="radio"
-                    id="All"    
+                    id="All"
                     name="cat"
                     value="all"
                     [(ngModel)]="radioSelect"
                     (change)="radioFunction()"
-                >
-                <label for="html">All &nbsp;</label><br>
+                />
+                <label for="html">All &nbsp;</label><br />
 
                 <input
                     type="radio"
@@ -35,8 +35,8 @@
                     value="physical"
                     [(ngModel)]="radioSelect"
                     (change)="radioFunction()"
-                >
-                <label for="html">Physcial</label><br>
+                />
+                <label for="html">Physcial</label><br />
                 <input
                     type="radio"
                     id="Digital"
@@ -44,17 +44,9 @@
                     value="digital"
                     [(ngModel)]="radioSelect"
                     (change)="radioFunction()"
-                >
-                <label for="css">Digital</label><br>
-                <h6
-                    class="navbar-nav mx-2 me-auto mb-2 mb-lg-0 .text-success "
-                    *ngIf="userId != ''"
-                >selected UserId:
-                    &nbsp; &nbsp;
-                    <span class=" text-black bg-warning
-                        ">
-                        {{userId}} </span>
-                </h6>
+                />
+                <label for="css">Digital</label><br />
+
                 <div
                     class="collapse navbar-collapse"
                     id="navbarTogglerDemo03"
@@ -65,87 +57,51 @@
                         role="search"
                     >
                         <button
-                            type="button"
-                            class="btn btn-outline-success mb-lg-0 mx-2"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >Select User</button>
-                        <button
                             class="btn btn-outline-success mx-2"
                             (click)="navigateToCart()"
                         >
-                            View Cart</button>
+                            View Cart
+                        </button>
                         <button
                             class="btn btn-outline-success mx-2"
                             (click)="navigateToOrders()"
-                        >View Orders</button>
-
+                        >
+                            View Orders
+                        </button>
                     </form>
                 </div>
             </div>
         </nav>
-
-        <!-- Modal for Entering UserID-->
-        <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1
-                            class="modal-title fs-5"
-                            id="exampleModalLabel"
-                        >Enter User ID</h1>
-                        <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        ></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input-group mb-3">
-                            <input
-                                type="text"
-                                [(ngModel)]="userId"
-                                class="form-control"
-                                placeholder="Enter user ID"
-                                aria-label="UserID"
-                                aria-describedby="basic-addon2"
-                            >
-                            <span
-                                class="input-group-text"
-                                id="basic-addon2"
-                            ></span>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                        >Cancel</button>
-                        <button
-                            type="button"
-                            (click)="printID()"
-                            data-bs-dismiss="modal"
-                            class="btn btn-primary"
-                        >Confirm</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
 
     <!-- DISPLAYING ALL PRODUCTS AND THEIR CATEGORIES -->
 
+    <div class="userId">
+        <div class="input-group mb-3">
+            <input
+                type="text"
+                [(ngModel)]="userId"
+                class="form-control"
+                placeholder="Enter user Id"
+                aria-label="userId"
+                aria-describedby="basic-addon2"
+            />
+            <span
+                class="input-group-text"
+                id="basic-addon2"
+            ></span>
+        </div>
+        <button
+            type="button"
+            (click)="printID()"
+            class="btn btn-primary"
+        >
+            Confirm
+        </button>
+    </div>
 
-    <section style="background-color: #eee;">
+
+    <section style="background-color: #eee">
         <div class="container py-3">
             <div class="row">
                 <ng-container *ngFor="let product of productList$ | async">
@@ -155,12 +111,8 @@
                             [userId]="userId"
                         ></app-product-card>
                     </div>
-                    <!-- <div class="col-md-12 col-lg-4 mb-4 mb-lg-0 py-3">
-                        <app-product-card [data]="product" [userId]="userId"></app-product-card>
-                    </div> -->
                 </ng-container>
             </div>
         </div>
     </section>
-
 </div>

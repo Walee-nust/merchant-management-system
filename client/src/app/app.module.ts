@@ -23,6 +23,7 @@ import { EditCategoryComponent } from './modules/categories/edit/edit-category.c
 import { NewCategoryComponent } from './modules/categories/new/new-category.component';
 import { ViewCategoryComponent } from './modules/categories/view/view-category.component';
 import { CategoriesComponent } from './modules/categories/categories.component';
+import { CartComponent } from './modules/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CategoriesComponent } from './modules/categories/categories.component';
     CategoriesComponent,
     EditCategoryComponent,
     NewCategoryComponent,
-    ViewCategoryComponent
+    ViewCategoryComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -66,8 +68,5 @@ import { CategoriesComponent } from './modules/categories/categories.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  // schemas: [
-  //   CUSTOM_ELEMENTS_SCHEMA
-  // ],
 })
 export class AppModule { }
