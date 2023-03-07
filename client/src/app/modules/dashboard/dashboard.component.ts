@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../../services/dashboard/dashboard.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { OrderService } from 'src/app/services/order/order.service';
 
 export interface PeriodicElement {
   name: string;
@@ -47,7 +48,12 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(
+    private dashboardService: DashboardService,
+    private orderService: OrderService
+  ) { }
+
+  ordersCount = 0;
 
   ngOnInit() {
     this.bigChart = this.dashboardService.bigChart();
@@ -55,6 +61,10 @@ export class DashboardComponent implements OnInit {
     this.pieChart = this.dashboardService.pieChart();
 
     this.dataSource.paginator = this.paginator;
+
+    this.orderService.getOrdersCount().subscribe((res: any) => {
+      this.ordersCount = res;
+    });
   }
 
 }

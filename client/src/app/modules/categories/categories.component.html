@@ -6,52 +6,36 @@
         >
             <div class="material-icons add">
                 add
-            </div>  
+            </div>
             <div>
-                New Product
+                New Category
             </div>
         </button>
     </div>
 
-    <h1>Product:</h1>
+    <h1>Category:</h1>
 
     <table class="responsive-table highlight">
         <thead>
             <tr style="background-color:rgb(56, 79, 229)">
-                <th>Product Id</th>
+                <th>Category Id</th>
                 <th>Name</th>
-                <th>Type</th>
-                <th>Price</th>
-                <th>Category</th>
-                <!-- <th>Image</th> -->
                 <th>Action</th>
             </tr>
         </thead>
-        <tr *ngFor="let prod of productService.products">
+        <tr *ngFor="let category of categoryService.categories">
             <td>
-                {{prod._id}}
+                {{category._id}}
             </td>
             <td>
-                {{prod.name}}
+                {{category.name}}
             </td>
-            <td>
-                {{prod.type}}
-            </td>
-            <td>
-                ${{prod.price}}
-            </td>
-            <td>
-                {{prod.categoryId}}
-            </td>
-            <!-- <td>
-                {{prod.image}}
-            </td> -->
             <td>
                 <div class="line">
                     <a class="action-btn">
                         <i
                             class="material-icons"
-                            (click)="view(prod)"
+                            (click)="view(category)"
                         >
                             search
                         </i>
@@ -59,7 +43,7 @@
                     <a class="action-btn">
                         <i
                             class="material-icons"
-                            (click)="edit(prod)"
+                            (click)="edit(category)"
                         >
                             edit
                         </i>
@@ -67,7 +51,7 @@
                     <a class="action-btn">
                         <i
                             class="material-icons"
-                            (click)="delete(prod)"
+                            (click)="delete(category)"
                         >
                             delete
                         </i>

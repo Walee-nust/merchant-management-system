@@ -22,13 +22,17 @@ export class ProductsComponent {
 
   ngOnInit() {
     this.refreshProductList();
-
   }
+
   refreshProductList() {
     this.productService.getProducts().subscribe((res) => {
       this.productService.products = res as Product[];
       console.log(this.productService.products);
     });
+  }
+
+  new() {
+    this.router.navigate(['products/new']);
   }
 
   view(prod: Product) {
@@ -37,7 +41,7 @@ export class ProductsComponent {
   }
 
   delete(prod: Product) {
-    if (confirm('Are you sure to delete this record ?') == true) {
+    if (confirm('Are you sure to delete this product ?') == true) {
       this.productService.deleteProduct(prod).subscribe((res) => {
         this.refreshProductList();
         this.snackBar.open('Deleted Successfully!', '', {
@@ -51,7 +55,4 @@ export class ProductsComponent {
     this.router.navigate(['products']);
   }
 
-  newProduct() {
-    this.router.navigate(['products/new']);
-  }
 }

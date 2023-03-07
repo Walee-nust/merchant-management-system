@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './layouts/default/default.component';
+import { CategoriesComponent } from './modules/categories/categories.component';
+import { EditCategoryComponent } from './modules/categories/edit/edit-category.component';
+import { NewCategoryComponent } from './modules/categories/new/new-category.component';
+import { ViewCategoryComponent } from './modules/categories/view/view-category.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { EditOrderComponent } from './modules/orders/edit/edit-order.component';
 import { NewOrderComponent } from './modules/orders/new/new-order.component';
@@ -34,6 +38,15 @@ const routes: Routes = [
           { path: 'new', component: NewProductComponent },
           { path: 'edit/:id', component: EditProductComponent },
           { path: 'view/:id', component: ViewProductComponent }
+        ]
+      },  
+      {
+        path: 'categories',
+        children: [
+          { path: '', component: CategoriesComponent, },
+          { path: 'new', component: NewCategoryComponent },
+          { path: 'edit/:id', component: EditCategoryComponent },
+          { path: 'view/:id', component: ViewCategoryComponent }
         ]
       }
     ]

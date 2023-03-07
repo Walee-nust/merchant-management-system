@@ -19,6 +19,10 @@ import { ViewOrderComponent } from './modules/orders/view/view-order.component';
 import { EditOrderComponent } from './modules/orders/edit/edit-order.component';
 import { NewOrderComponent } from './modules/orders/new/new-order.component';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { EditCategoryComponent } from './modules/categories/edit/edit-category.component';
+import { NewCategoryComponent } from './modules/categories/new/new-category.component';
+import { ViewCategoryComponent } from './modules/categories/view/view-category.component';
+import { CategoriesComponent } from './modules/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
     ViewOrderComponent,
     EditOrderComponent,
     NewOrderComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    CategoriesComponent,
+    EditCategoryComponent,
+    NewCategoryComponent,
+    ViewCategoryComponent
   ],
   imports: [
     BrowserModule,

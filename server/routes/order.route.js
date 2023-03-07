@@ -7,7 +7,8 @@ const {
     updateOrderAddress,
     updateOrderStatus,
     getOrderInvoices,
-    deleteInvoice
+    deleteInvoice,
+    getOrdersCount
 } = require("../controllers/order.controller");
 
 router.get('/getAllOrders', getAllOrders)
@@ -17,5 +18,6 @@ router.post('/addOrder', addOrder)
 router.delete('/deleteOrder/:order_id', deleteOrder)
 router.put('/updateOrderAddress/:order_id', updateOrderAddress)
 router.put('/updateOrderStatus/:order_id', updateOrderStatus)
+router.get('/count', getOrdersCount)
 
 module.exports = router;

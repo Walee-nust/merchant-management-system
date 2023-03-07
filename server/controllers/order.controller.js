@@ -78,3 +78,8 @@ exports.updateOrderStatus = async (req, res) => {
     await orderModel.findOneAndUpdate({ _id: req.params.order_id }, { status: new_status })
     res.json(`status updated to ${new_status}`)
 }
+
+exports.getOrdersCount = async (req, res) => {
+    const count = await orderModel.countDocuments();
+    res.json(count);
+}
