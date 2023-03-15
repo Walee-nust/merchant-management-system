@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Product } from 'src/app/services/product/product.model';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,13 +16,10 @@ import { Router } from '@angular/router';
 export class NewOrderComponent implements OnInit {
 
   categories: string[] = ["All", "Physical", "Digital"];
-  productList$: Observable<Product[]> = new Observable();
-  physicalList: Observable<Product[]> = new Observable();
-  digitalList: Observable<Product[]> = new Observable();
-  physicalChecked = false;
-  digitalChecked = false;
-  userId: string;
-  radioSelect: string = "";
+  productList$ = [];
+  displayedColumns: string[] = ['name', 'quantity', 'cost'];
+  dataSource: MatTableDataSource<Product>;
+  selectedProducts = [];
 
 
   constructor(
@@ -30,47 +27,35 @@ export class NewOrderComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router
   ) {
-    this.userId = '';
     this.fetchAllProducts();
   }
 
   ngOnInit(): void {
+    this.fetchAllProducts();
   }
 
+  products = new FormControl();
 
   fetchAllProducts(): void {
-    this.productList$ = this.productService.getAllProducts();
-  }
-  fetchDigitalProducts(): void {
-    this.productList$ = this.productService.getDigitalProducts();
-  }
-  fetchPhysicalProducts(): void {
-    this.productList$ = this.productService.getPhysicalProducts();
-  }
-
-  radioFunction() {
-    console.log(this.radioSelect);
-    if (this.radioSelect == "physical") {
-
-      this.fetchPhysicalProducts();
-    }
-    else if (this.radioSelect == "digital") {
-      this.fetchDigitalProducts();
-    }
-    else {
-      this.fetchAllProducts();
-    }
-  }
-
-  printID() {
-    console.log(this.userId);
-    this.snackBar.open('User selected Successfully!', '', {
-      duration: 3000,
+    this.productService.getProducts().subscribe((data: any[]) => {
+      this.productList$ = data;
+      console.log(this.productList$);
     });
   }
 
-  navigateToCart() {
-    this.router.navigate(['orders/cart'], { queryParams: { userId: this.userId } });
+  addProduct(product: Product) {
+    console.log(product);
+    if (this.selectedProducts.includes(product)) {
+      this.selectedProducts = this.selectedProducts.filter(p => p._id !== product._id);
+      console.log('Removed');
+      console.log(this.selectedProducts);
+    } else {
+      this.selectedProducts.push(product);
+      console.log('Added');
+      console.log(this.selectedProducts);
+    }
+
+    this.dataSource = new MatTableDataSource(this.selectedProducts);
   }
 
   navigateToOrders() {

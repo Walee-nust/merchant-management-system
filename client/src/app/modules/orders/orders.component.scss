@@ -6,10 +6,10 @@ table {
   border-collapse: collapse;
   background-color: #448aff;
   border-radius: 20px;
-  margin: 28px;
-  width: 70%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  text-align: center !important;
   box-shadow: -14px 19px 17px -2px rgba(0, 0, 0, 0.38);
   -webkit-box-shadow: -14px 19px 17px -2px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: -14px 19px 17px -2px rgba(0, 0, 0, 0.38);
@@ -34,8 +34,12 @@ i {
 
 table td,
 th {
+  color: white;
   padding: 20px;
-  color: white
+}
+
+th {
+  font-size: 20px;
 }
 
 h1 {
@@ -104,4 +108,21 @@ h2 {
 
 .add {
   padding-right: 3px;
+}
+
+:host ::ng-deep .mat-header-cell-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-form-field {
+  width: 40%;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filters-btn {
+  display: flex;
 }

@@ -1,24 +1,22 @@
-<div class="col s7">
-
-    <div class="center">
-        <button
-            class="btn1"
-            (click)="newOrder()"
-        >
-            <div class="material-icons add">
-                add
-            </div>
-            <div>
-                New Order
-            </div>
-        </button>
+<div class="center">
+    <button
+        class="btn1"
+        (click)="newOrder()"
+    >
+        <div class="material-icons add">
+            add
+        </div>
+        <div>
+            New Order
+        </div>
+    </button>
 
 
-    </div>
+</div>
 
-    <h1>Orders:</h1>
+<h1>Orders:</h1>
 
-    <table class="responsive-table highlight">
+<!-- <table class="responsive-table highlight">
         <thead>
             <tr style="background-color:rgb(56, 79, 229)">
                 <th>User Id</th>
@@ -73,7 +71,10 @@
                         </i>
                     </a>
 
-                    <a class="action-btn">
+                    <a
+                        class="action-btn"
+                        matTooltip="Change Address"
+                    >
                         <i
                             class="material-icons"
                             (click)="editOrderAddress(ord)"
@@ -92,5 +93,229 @@
                 </div>
 
             </td>
-    </table>
-</div>
+    </table> -->
+
+
+<mat-expansion-panel class="filters">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Filters
+        </mat-panel-title>
+        <mat-panel-description>
+            Apply Filters
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field [ngModel]="filtersModel">
+        <mat-label>Shipping Address</mat-label>
+        <input
+            matInput
+            (keyup)="applyFilter('shipping_address', $event.target.value)"
+            placeholder="Ex. 1234"
+            #input
+        >
+    </mat-form-field>
+
+    <mat-form-field [ngModel]="filtersModel">
+        <mat-label>Status</mat-label>
+        <mat-select>
+            <mat-option
+                *ngFor="let status of statuses"
+                [value]="status.value"
+                (click)="applyFilter('status', status.value)"
+            >
+                {{status.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="filters-btn">
+        <button class="btn1">
+            <mat-icon>save</mat-icon>
+            Apply
+        </button>
+        <button
+            class="btn1"
+            (click)="clearFilters()"
+        >
+            <mat-icon>clear</mat-icon>
+            Clear Fields
+        </button>
+    </div>
+</mat-expansion-panel>
+
+<table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+>
+
+    <ng-container matColumnDef="user_id">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+            User Id
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        > {{row.user_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="products">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+            Products
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        >
+            <button
+                class="btn2"
+                (click)="viewProducts(row)"
+            >
+                View Products
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="order_date">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+            Order Date
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        > {{row.date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="shipping_address">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+            Shipping Address
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        > {{row.shipping_address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cost">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+            Cost
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        > {{row.cost}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+            Status
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        > {{row.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+            Actions
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        >
+            <div class="line">
+                <a class="action-btn">
+                    <i
+                        *ngIf="row.status=='not delivered'"
+                        class="material-icons"
+                        [ngStyle]="{'color':'red','border-radius':'20px'}"
+                        (click)="editOrderStatus(row)"
+                    >
+                        delivery_dining
+                    </i>
+                    <i
+                        *ngIf="row.status=='delivered'"
+                        class="material-icons"
+                        [ngStyle]="{'color':'green','border-radius':'20px'}"
+                        (click)="editOrderStatus(rpw)"
+                    >
+                        delivery_dining
+                    </i>
+                </a>
+
+                <a
+                    class="action-btn"
+                    matTooltip="Change Address"
+                >
+                    <i
+                        class="material-icons"
+                        (click)="editOrderAddress(row)"
+                    >
+                        edit
+                    </i>
+                </a>
+                <a class="action-btn">
+                    <i
+                        class="material-icons"
+                        (click)="deleteOrder(row)"
+                    >
+                        delete
+                    </i>
+                </a>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+    ></tr>
+    <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+
+    <tr
+        class="mat-row"
+        *matNoDataRow
+    >
+        <td
+            class="mat-cell"
+            colspan="4"
+        >No data matching the filter "{{input.value}}"</td>
+    </tr>
+</table>
+
+<mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+></mat-paginator>

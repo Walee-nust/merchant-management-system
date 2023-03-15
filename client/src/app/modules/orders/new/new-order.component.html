@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <div>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
@@ -17,7 +17,6 @@
                     class="navbar-brand mx-2 navID"
                     href=""
                 >Products</a>
-                <!-- text  -->
                 <input
                     type="radio"
                     id="All"
@@ -74,8 +73,6 @@
         </nav>
     </div>
 
-    <!-- DISPLAYING ALL PRODUCTS AND THEIR CATEGORIES -->
-
     <div class="userId">
         <div class="input-group mb-3">
             <input
@@ -115,4 +112,96 @@
             </div>
         </div>
     </section>
+</div> -->
+
+<h2>
+    New Order
+</h2>
+
+<div class="products-container">
+    <mat-form-field>
+        <mat-select
+            multiple
+            placeholder="Product"
+            [formControl]="products"
+            class="products-select"
+        >
+            <mat-select-trigger class="products-additional-selection">
+                <div
+                    class="single-product"
+                    *ngFor="let prod of products.value; let i = index"
+                >
+                    {{i > -1 ? prod : ''}}
+                </div>
+            </mat-select-trigger>
+            <mat-option
+                *ngFor="let product of productList$"
+                [value]="product.name"
+                (click)="addProduct(product)"
+            >
+                {{ product.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>
+
+<table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+>
+
+    <ng-container matColumnDef="name">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+        >
+            Product Name
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        >
+            {{row.name}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+        >
+            Qunatity
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        >
+            Quantity
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cost">
+        <th
+            mat-header-cell
+            *matHeaderCellDef
+        >
+            Cost
+        </th>
+        <td
+            mat-cell
+            *matCellDef="let row"
+        >
+            Cost
+        </td>
+    </ng-container>
+
+    <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+    ></tr>
+    <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+</table>

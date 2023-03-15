@@ -24,7 +24,11 @@ import { NewCategoryComponent } from './modules/categories/new/new-category.comp
 import { ViewCategoryComponent } from './modules/categories/view/view-category.component';
 import { CategoriesComponent } from './modules/categories/categories.component';
 import { CartComponent } from './modules/cart/cart.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +68,12 @@ import { CartComponent } from './modules/cart/cart.component';
     MatDialogModule,
     MatOptionModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent],

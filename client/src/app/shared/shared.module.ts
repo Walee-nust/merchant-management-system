@@ -13,7 +13,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     HighchartsChartModule,
     MatDialogModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTooltipModule
   ],
   exports: [
     HeaderComponent,

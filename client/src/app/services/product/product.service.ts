@@ -49,7 +49,6 @@ export class ProductService {
         }
         else if (type == "digital") {
           this.digitalProducts.next(digitalProductsArr);
-
         }
         else if (type == "all") {
           this.productList$.next(products);
@@ -87,7 +86,7 @@ export class ProductService {
   addOrder(userId: string, shippingAddress: string, status: string) {
     const body = {
       user_id: userId,
-      shipping_address: shippingAddress,  
+      shipping_address: shippingAddress,
       status: status,
     };
 
